@@ -1,16 +1,20 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Artwork } from '@/lib/airtable';
 
 export default function DocentBrowser() {
+  const router = useRouter();
   const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [filteredArtworks, setFilteredArtworks] = useState<Artwork[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchSuggestions, setSearchSuggestions] = useState<Artwork[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [sortBy, setSortBy] = useState<'title-asc' | 'title-desc' | 'date'>('title-asc');
   const [showOnDisplay, setShowOnDisplay] = useState(true);
   const [showNotOnDisplay, setShowNotOnDisplay] = useState(true);
@@ -18,13 +22,73 @@ export default function DocentBrowser() {
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const searchRef = useRef<HTMLDivElement>(null);
 
   // Load artworks from local data
   useEffect(() => {
     loadArtworks();
   }, []);
 
-  // Filter and sort artworks
+  // Handle click outside to close suggestions
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setShowSuggestions(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Generate search suggestions with prioritized ranking
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSearchSuggestions([]);
+      setShowSuggestions(false);
+      return;
+    }
+
+    const query = searchQuery.toLowerCase();
+    const scored = artworks.map(artwork => {
+      let score = 0;
+      const title = (artwork.Title || '').toLowerCase();
+      const artist = (artwork['Artist (Display)'] || '').toLowerCase();
+      const accession = (artwork['Accession Number'] || '').toLowerCase();
+      const description = (artwork['Artwork Description'] || '').toLowerCase();
+
+      // Exact title match - highest priority
+      if (title === query) score += 1000;
+      // Title starts with query
+      else if (title.startsWith(query)) score += 500;
+      // Title contains query
+      else if (title.includes(query)) score += 100;
+
+      // Artist matches
+      if (artist === query) score += 400;
+      else if (artist.startsWith(query)) score += 200;
+      else if (artist.includes(query)) score += 50;
+
+      // Accession number matches
+      if (accession.includes(query)) score += 150;
+
+      // Description matches (lowest priority)
+      if (description.includes(query)) score += 10;
+
+      return { artwork, score };
+    });
+
+    // Filter out zero scores and sort by score
+    const suggestions = scored
+      .filter(item => item.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10) // Limit to 10 suggestions
+      .map(item => item.artwork);
+
+    setSearchSuggestions(suggestions);
+    setShowSuggestions(suggestions.length > 0);
+  }, [searchQuery, artworks]);
+
+  // Filter and sort artworks for main display
   useEffect(() => {
     let filtered = artworks;
 
@@ -80,20 +144,19 @@ export default function DocentBrowser() {
   async function handleSync() {
     setSyncing(true);
     try {
-      const response = await fetch('/api/sync', { method: 'POST' });
-      const data = await response.json();
-
-      if (data.success) {
-        await loadArtworks();
-        alert(`Synced ${data.count} artworks successfully!`);
-      } else {
-        alert('Sync failed: ' + data.error);
-      }
+      await loadArtworks();
+      alert('Data refreshed successfully!');
     } catch (error: any) {
-      alert('Sync failed: ' + error.message);
+      alert('Refresh failed: ' + error.message);
     } finally {
       setSyncing(false);
     }
+  }
+
+  function handleSuggestionClick(artwork: Artwork) {
+    setSearchQuery('');
+    setShowSuggestions(false);
+    router.push(`/docent/artwork/${artwork.id}`);
   }
 
   if (loading) {
@@ -126,14 +189,45 @@ export default function DocentBrowser() {
       {/* Controls */}
       <div className="mb-6 space-y-4">
         <div className="flex gap-4 flex-wrap">
-          <div className="flex-1 min-w-[200px]">
+          <div className="flex-1 min-w-[200px] relative" ref={searchRef}>
             <Input
               type="search"
               placeholder="Search artworks, artists, or accession numbers..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => searchSuggestions.length > 0 && setShowSuggestions(true)}
               className="w-full"
             />
+            
+            {/* Search Suggestions Dropdown */}
+            {showSuggestions && searchSuggestions.length > 0 && (
+              <div className="absolute z-50 w-full mt-1 bg-white border rounded-lg shadow-lg max-h-96 overflow-y-auto">
+                {searchSuggestions.map((artwork) => (
+                  <button
+                    key={artwork.id}
+                    onClick={() => handleSuggestionClick(artwork)}
+                    className="w-full text-left px-4 py-3 hover:bg-gray-100 border-b last:border-b-0 flex gap-3 items-start"
+                  >
+                    {artwork.thumbnail && (
+                      <img 
+                        src={artwork.thumbnail} 
+                        alt={artwork.Title}
+                        className="w-12 h-12 object-cover rounded flex-shrink-0"
+                      />
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="font-semibold text-sm truncate">{artwork.Title}</div>
+                      {artwork['Artist (Display)'] && (
+                        <div className="text-xs text-gray-600 truncate">{artwork['Artist (Display)']}</div>
+                      )}
+                      {artwork['Accession Number'] && (
+                        <div className="text-xs text-gray-500">{artwork['Accession Number']}</div>
+                      )}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="flex gap-2">
