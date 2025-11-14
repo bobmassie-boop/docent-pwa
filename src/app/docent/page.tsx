@@ -20,7 +20,6 @@ export default function DocentBrowser() {
   const [showNotOnDisplay, setShowNotOnDisplay] = useState(true);
   const [lastSync, setLastSync] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [syncing, setSyncing] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const searchRef = useRef<HTMLDivElement>(null);
 
@@ -141,18 +140,6 @@ export default function DocentBrowser() {
     }
   }
 
-  async function handleSync() {
-    setSyncing(true);
-    try {
-      await loadArtworks();
-      alert('Data refreshed successfully!');
-    } catch (error: any) {
-      alert('Refresh failed: ' + error.message);
-    } finally {
-      setSyncing(false);
-    }
-  }
-
   function handleSuggestionClick(artwork: Artwork) {
     setSearchQuery('');
     setShowSuggestions(false);
@@ -244,14 +231,6 @@ export default function DocentBrowser() {
               List
             </Button>
           </div>
-
-          <Button
-            onClick={handleSync}
-            disabled={syncing}
-            variant="secondary"
-          >
-            {syncing ? 'Syncing...' : 'Refresh Data'}
-          </Button>
         </div>
 
         {/* Sort and Filter Controls */}
@@ -293,10 +272,10 @@ export default function DocentBrowser() {
           </div>
         </div>
 
-        {/* Sync info */}
+        {/* Data info */}
         {lastSync && (
           <div className="text-sm text-muted-foreground">
-            Last synced: {new Date(lastSync).toLocaleString()} • {filteredArtworks.length} artworks
+            Showing {filteredArtworks.length} artworks • Data loads fresh from Airtable
           </div>
         )}
       </div>
