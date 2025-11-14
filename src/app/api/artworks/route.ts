@@ -1,15 +1,17 @@
-// API route to get artworks data
+// API route to get artworks data - fetch directly from Airtable
 import { NextResponse } from 'next/server';
-import { loadArtworks, getSyncMeta } from '@/lib/sync';
+import { fetchArtworks } from '@/lib/airtable';
 
 export async function GET() {
   try {
-    const artworks = await loadArtworks();
-    const meta = await getSyncMeta();
+    const artworks = await fetchArtworks();
 
     return NextResponse.json({
       artworks,
-      meta
+      meta: {
+        lastSync: new Date().toISOString(),
+        count: artworks.length
+      }
     });
   } catch (error: any) {
     return NextResponse.json(
