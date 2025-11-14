@@ -11,7 +11,6 @@ export default function ArtworkDetail() {
   const router = useRouter();
   const [artwork, setArtwork] = useState<Artwork | null>(null);
   const [loading, setLoading] = useState(true);
-  const [showHighRes, setShowHighRes] = useState(false);
 
   useEffect(() => {
     loadArtwork();
@@ -59,7 +58,7 @@ export default function ArtworkDetail() {
     );
   }
 
-  const imageUrl = showHighRes && artwork.imageUrl ? artwork.imageUrl : artwork.thumbnail;
+  const imageUrl = artwork.imageUrl || artwork.thumbnail;
 
   return (
     <div className="container mx-auto p-4 max-w-4xl">
@@ -76,36 +75,12 @@ export default function ArtworkDetail() {
       <Card>
         {/* Image */}
         {imageUrl && (
-          <div className="relative">
-            <div className="aspect-square overflow-hidden rounded-t-lg bg-muted">
-              <img
-                src={imageUrl}
-                alt={artwork.Title}
-                className="w-full h-full object-contain"
-              />
-            </div>
-            {artwork.imageUrl && !showHighRes && (
-              <div className="absolute bottom-4 right-4">
-                <Button
-                  onClick={() => setShowHighRes(true)}
-                  variant="secondary"
-                  size="sm"
-                >
-                  View High-Res (WiFi)
-                </Button>
-              </div>
-            )}
-            {showHighRes && (
-              <div className="absolute bottom-4 right-4">
-                <Button
-                  onClick={() => setShowHighRes(false)}
-                  variant="secondary"
-                  size="sm"
-                >
-                  View Thumbnail
-                </Button>
-              </div>
-            )}
+          <div className="aspect-square overflow-hidden rounded-t-lg bg-muted">
+            <img
+              src={imageUrl}
+              alt={artwork.Title}
+              className="w-full h-full object-contain"
+            />
           </div>
         )}
 
