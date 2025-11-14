@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Museum Docent PWA
 
-## Getting Started
+An offline-first Progressive Web App for museum docents to browse and explore artwork collections on mobile devices.
 
-First, run the development server:
+## Features
+
+- ✅ **Offline-First**: Browse artworks without internet connection
+- ✅ **Airtable Integration**: Sync artwork data from Airtable
+- ✅ **PWA Support**: Install as native app on mobile devices
+- ✅ **Search & Filter**: Find artworks by title, artist, or accession number
+- ✅ **Grid/List Views**: Switch between grid and list display modes
+- ✅ **Detailed Views**: Rich artwork information
+- ✅ **Responsive Design**: Mobile-first, touch-friendly
+- ✅ **Image Optimization**: Thumbnails offline, high-res on WiFi
+
+## Quick Start
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Configure Airtable (edit .env.local)
+AIRTABLE_API_KEY=your_key_here
+
+# 3. Sync data
+npm run sync
+
+# 4. Start development
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 5. Open http://localhost:3000/docent
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Edit `.env.local`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+AIRTABLE_API_KEY=keyXXXXXXXXXXXXXX
+AIRTABLE_BASE_ID=app7NTxVWHDuiX8qF
+AIRTABLE_TABLE_ID=tbl7qP6ZmshsKuxe6
+```
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+### Syncing Data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Automatic**: App checks for updates on launch (when online)
+- **Manual**: Click "Refresh Data" button in app
+- **CLI**: Run `npm run sync`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Viewing Artworks
 
-## Deploy on Vercel
+1. Open `/docent` for artwork browser
+2. Toggle Grid/List view
+3. Search by title, artist, or accession number
+4. Click artwork for details
+5. View high-res images (requires WiFi)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete deployment instructions.
+
+Quick deploy to Vercel:
+```bash
+vercel --prod
+```
+
+## Scripts
+
+```bash
+npm run dev      # Development server
+npm run build    # Production build
+npm start        # Start production server
+npm run sync     # Sync from Airtable
+npm run lint     # Run linter
+```
+
+## Tech Stack
+
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- next-pwa
+- Airtable API
+
+## License
+
+MIT
