@@ -17,7 +17,8 @@ export default function DocentBrowser() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [sortBy, setSortBy] = useState<'title-asc' | 'title-desc' | 'date'>('title-asc');
   const [showOnDisplay, setShowOnDisplay] = useState(true);
-  const [showNotOnDisplay, setShowNotOnDisplay] = useState(true);
+  const [showNotOnDisplay, setShowNotOnDisplay] = useState(false);
+  const [galleryLocation, setGalleryLocation] = useState('');
   const [lastSync, setLastSync] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -109,6 +110,14 @@ export default function DocentBrowser() {
       return true;
     });
 
+    // Apply gallery location filter - using FIND logic (case-insensitive partial match)
+    if (galleryLocation.trim()) {
+      filtered = filtered.filter(artwork => {
+        const location = artwork['Gallery Location'] || '';
+        return location.toLowerCase().includes(galleryLocation.toLowerCase());
+      });
+    }
+
     // Apply sorting
     const sorted = [...filtered].sort((a, b) => {
       switch (sortBy) {
@@ -124,7 +133,7 @@ export default function DocentBrowser() {
     });
 
     setFilteredArtworks(sorted);
-  }, [searchQuery, artworks, sortBy, showOnDisplay, showNotOnDisplay]);
+  }, [searchQuery, artworks, sortBy, showOnDisplay, showNotOnDisplay, galleryLocation]);
 
   async function loadArtworks() {
     try {
@@ -270,7 +279,20 @@ export default function DocentBrowser() {
               <span>Not On Display</span>
             </label>
           </div>
+
+          {/* Gallery Location filter */}
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-medium">Gallery Location:</label>
+            <Input
+              type="text"
+              placeholder="Filter by location..."
+              value={galleryLocation}
+              onChange={(e) => setGalleryLocation(e.target.value)}
+              className="w-48 h-9"
+            />
+          </div>
         </div>
+
 
         {/* Data info */}
         {lastSync && (
