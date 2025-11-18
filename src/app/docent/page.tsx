@@ -250,6 +250,21 @@ export default function DocentBrowser() {
 
         {/* Sort and Filter Controls */}
         <div className="flex gap-4 flex-wrap items-center">
+          {/* Collection filter */}
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-medium">Collection:</label>
+            <select
+              value={collection}
+              onChange={(e) => setCollection(e.target.value)}
+              className="px-3 py-2 border rounded-md text-sm h-9"
+            >
+              <option value="">All Collections</option>
+              <option value="American Painting & Sculpture 1800–1945">American 1800–1945</option>
+              <option value="American Painting & Sculpture Before 1800">American Before 1800</option>
+              <option value="Turner Exhibition - Golden Gallery">Turner Exhibition</option>
+            </select>
+          </div>
+
           {/* Sort dropdown */}
           <div className="flex items-center gap-2">
             <label className="text-sm font-medium">Sort:</label>
@@ -284,21 +299,6 @@ export default function DocentBrowser() {
               />
               <span>Not On Display</span>
             </label>
-          </div>
-
-          {/* Collection filter */}
-          <div className="flex items-center gap-2">
-            <label className="text-sm font-medium">Collection:</label>
-            <select
-              value={collection}
-              onChange={(e) => setCollection(e.target.value)}
-              className="px-3 py-2 border rounded-md text-sm h-9"
-            >
-              <option value="">All Collections</option>
-              <option value="American Painting & Sculpture 1800–1945">American 1800–1945</option>
-              <option value="American Painting & Sculpture Before 1800">American Before 1800</option>
-              <option value="Turner Exhibition - Golden Gallery">Turner Exhibition</option>
-            </select>
           </div>
 
           {/* Gallery Location filter */}
