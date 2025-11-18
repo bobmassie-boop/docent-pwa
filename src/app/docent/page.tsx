@@ -19,6 +19,7 @@ export default function DocentBrowser() {
   const [showOnDisplay, setShowOnDisplay] = useState(true);
   const [showNotOnDisplay, setShowNotOnDisplay] = useState(false);
   const [galleryLocation, setGalleryLocation] = useState('');
+  const [collection, setCollection] = useState('');
   const [lastSync, setLastSync] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -118,6 +119,11 @@ export default function DocentBrowser() {
       });
     }
 
+    // Apply collection filter
+    if (collection) {
+      filtered = filtered.filter(artwork => artwork.Collection === collection);
+    }
+
     // Apply sorting
     const sorted = [...filtered].sort((a, b) => {
       switch (sortBy) {
@@ -133,7 +139,7 @@ export default function DocentBrowser() {
     });
 
     setFilteredArtworks(sorted);
-  }, [searchQuery, artworks, sortBy, showOnDisplay, showNotOnDisplay, galleryLocation]);
+  }, [searchQuery, artworks, sortBy, showOnDisplay, showNotOnDisplay, galleryLocation, collection]);
 
   async function loadArtworks() {
     try {
@@ -278,6 +284,21 @@ export default function DocentBrowser() {
               />
               <span>Not On Display</span>
             </label>
+          </div>
+
+          {/* Collection filter */}
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-medium">Collection:</label>
+            <select
+              value={collection}
+              onChange={(e) => setCollection(e.target.value)}
+              className="px-3 py-2 border rounded-md text-sm h-9"
+            >
+              <option value="">All Collections</option>
+              <option value="American Painting & Sculpture 1800–1945">American 1800–1945</option>
+              <option value="American Painting & Sculpture Before 1800">American Before 1800</option>
+              <option value="Turner Exhibition - Golden Gallery">Turner Exhibition</option>
+            </select>
           </div>
 
           {/* Gallery Location filter */}
