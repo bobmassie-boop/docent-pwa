@@ -26,6 +26,11 @@ export interface Artwork {
   'Historical Context'?: string;
   'Cultural/Philosophical Movements'?: string;
   'Contemporary Literature'?: string;
+  'Contemporary Context'?: string;
+  'Cultural Context'?: string;
+  'Cultural/Philosophical Context'?: string;
+  'Philosophical Context'?: string;
+  'Supplemental Information'?: string;
   'Related Poems'?: string;
   'Period Music Links'?: string;
   'Supplemental Research Notes'?: string;
