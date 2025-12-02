@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Artwork } from '@/lib/airtable';
+import { Artwork } from '@/lib/supabase';
 
 export default function ArtworkDetail() {
   const params = useParams();

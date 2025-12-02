@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Artwork } from '@/lib/airtable';
+import { Artwork } from '@/lib/supabase';
 
 export default function DocentBrowser() {
   const router = useRouter();
@@ -183,7 +183,7 @@ export default function DocentBrowser() {
           alt="American Core Logo" 
           className="h-20 w-auto"
         />
-        <h1 className="text-[42px] leading-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+        <h1 className="text-[22px] leading-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
           AMERICAN CORE DOCENT REFERENCE
         </h1>
       </div>

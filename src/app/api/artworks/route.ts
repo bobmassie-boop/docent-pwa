@@ -1,6 +1,6 @@
-// API route to get artworks data - fetch directly from Airtable
+// API route to get artworks data - fetch directly from Supabase
 import { NextResponse } from 'next/server';
-import { fetchArtworks } from '@/lib/airtable';
+import { fetchArtworks } from '@/lib/supabase';
 
 export async function GET() {
   try {

@@ -1,6 +1,6 @@
-// API route to sync artworks from Airtable
+// API route to sync artworks from Supabase
 import { NextResponse } from 'next/server';
-import { fetchArtworks } from '@/lib/airtable';
+import { fetchArtworks } from '@/lib/supabase';
 import { saveArtworks } from '@/lib/sync';
 
 export async function POST() {

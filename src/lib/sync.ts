@@ -1,5 +1,5 @@
 // Artwork data synchronization utilities
-import { Artwork } from './airtable';
+import { Artwork } from './supabase';
 import fs from 'fs/promises';
 import path from 'path';
 
