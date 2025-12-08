@@ -5,7 +5,7 @@ import { saveArtworks } from '@/lib/sync';
 
 export async function POST() {
   try {
-    console.log('🔄 Starting Airtable sync...');
+    console.log('🔄 Starting Supabase sync...');
 
     const artworks = await fetchArtworks();
     await saveArtworks(artworks);

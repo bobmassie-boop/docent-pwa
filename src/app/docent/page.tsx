@@ -318,7 +318,7 @@ export default function DocentBrowser() {
         {/* Data info */}
         {lastSync && (
           <div className="text-sm text-muted-foreground">
-            Showing {filteredArtworks.length} artworks • Data loads fresh from Airtable
+            Showing {filteredArtworks.length} artworks • Data loads fresh from Supabase
           </div>
         )}
       </div>
@@ -328,7 +328,7 @@ export default function DocentBrowser() {
         <Card>
           <CardContent className="p-12 text-center">
             <p className="text-muted-foreground">
-              {searchQuery ? 'No artworks found matching your search.' : 'No artworks available. Click "Refresh Data" to sync from Airtable.'}
+              {searchQuery ? 'No artworks found matching your search.' : 'No artworks available.'}
             </p>
           </CardContent>
         </Card>
