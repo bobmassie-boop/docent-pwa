@@ -1,18 +1,18 @@
 #!/usr/bin/env ts-node
-// Manual sync script to fetch artworks from Airtable
+// Manual sync script to fetch artworks from Supabase
 import { config } from 'dotenv';
-import { fetchArtworks } from '../src/lib/airtable';
+import { fetchArtworks } from '../src/lib/supabase';
 import { saveArtworks } from '../src/lib/sync';
 
 // Load environment variables
 config({ path: '.env.local' });
 
 async function main() {
-  console.log('🎨 Museum Docent - Airtable Sync');
+  console.log('🎨 Museum Docent - Supabase Sync');
   console.log('================================\n');
 
   try {
-    console.log('🔄 Fetching artworks from Airtable...');
+    console.log('🔄 Fetching artworks from Supabase...');
     const artworks = await fetchArtworks();
 
     console.log(`✅ Fetched ${artworks.length} artworks`);
