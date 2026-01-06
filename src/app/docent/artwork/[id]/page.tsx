@@ -20,7 +20,6 @@ export default function ArtworkDetail() {
     try {
       const response = await fetch('/api/artworks');
       const data = await response.json();
-
       const found = data.artworks.find((a: Artwork) => a.id === params.id);
       setArtwork(found || null);
     } catch (error) {
@@ -49,9 +48,7 @@ export default function ArtworkDetail() {
         <Card>
           <CardContent className="p-12 text-center">
             <p className="text-lg mb-4">Artwork not found</p>
-            <Button onClick={() => router.push('/docent')}>
-              Back to Collection
-            </Button>
+            <Button onClick={() => router.push('/docent')}>Back to Collection</Button>
           </CardContent>
         </Card>
       </div>
@@ -60,85 +57,51 @@ export default function ArtworkDetail() {
 
   const imageUrl = artwork.imageUrl || artwork.thumbnail;
 
+  const typeLabels: Record<string, string> = {
+    tate: 'Tate Gallery',
+    saam: 'Smithsonian American Art',
+    met: 'Metropolitan Museum',
+    nga: 'National Gallery',
+    getty: 'Getty Research',
+    aic: 'Art Institute Chicago',
+    ima: 'IMA Collection',
+    moma: 'MoMA',
+    academic: 'Academic',
+    khan: 'Khan Academy',
+    archive: 'Archive.org',
+    other: 'Museum Resource'
+  };
+
   return (
     <div className="container mx-auto p-4 max-w-4xl">
-      {/* Back Button */}
-      <Button
-        variant="ghost"
-        onClick={() => router.push('/docent')}
-        className="mb-4"
-      >
+      <Button variant="ghost" onClick={() => router.push('/docent')} className="mb-4">
         ← Back to Collection
       </Button>
 
-      {/* Main Card */}
       <Card>
-        {/* Image */}
         {imageUrl && (
           <div className="aspect-square overflow-hidden rounded-t-lg bg-muted">
-            <img
-              src={imageUrl}
-              alt={artwork.Title}
-              className="w-full h-full object-contain"
-            />
+            <img src={imageUrl} alt={artwork.Title} className="w-full h-full object-contain" />
           </div>
         )}
 
         <CardHeader>
-          <CardTitle className="text-3xl">
-            {artwork.Title}
-          </CardTitle>
+          <CardTitle className="text-3xl">{artwork.Title}</CardTitle>
           {artwork['Artist (Display)'] && (
-            <p className="text-xl text-muted-foreground">
-              {artwork['Artist (Display)']}
-            </p>
+            <p className="text-xl text-muted-foreground">{artwork['Artist (Display)']}</p>
           )}
         </CardHeader>
 
         <CardContent className="space-y-6">
-          {/* Basic Info */}
           <div className="grid grid-cols-2 gap-4 text-sm">
-            {artwork['Accession Number'] && (
-              <div>
-                <span className="font-semibold">Accession Number:</span> {artwork['Accession Number']}
-              </div>
-            )}
-            {artwork.Collection && (
-              <div>
-                <span className="font-semibold">Collection:</span> {artwork.Collection}
-              </div>
-            )}
-            {artwork.Date && (
-              <div>
-                <span className="font-semibold">Date:</span> {artwork.Date}
-              </div>
-            )}
-            {artwork.Medium && (
-              <div>
-                <span className="font-semibold">Medium:</span> {artwork.Medium}
-              </div>
-            )}
-            {artwork.Dimensions && (
-              <div>
-                <span className="font-semibold">Dimensions:</span> {artwork.Dimensions}
-              </div>
-            )}
-            {artwork['Gallery Location'] && (
-              <div>
-                <span className="font-semibold">Gallery Location:</span> {artwork['Gallery Location']}
-              </div>
-            )}
-            {artwork['On Display'] !== undefined && (
-              <div className="col-span-2">
-                <span className="font-semibold">Status:</span>{' '}
-                <span className={artwork['On Display'] ? 'text-green-600' : 'text-muted-foreground'}>
-                  {artwork['On Display'] ? '✓ On Display' : 'Not Currently Displayed'}
-                </span>
-              </div>
-            )}
+            {artwork['Accession Number'] && <div><span className="font-semibold">Accession Number:</span> {artwork['Accession Number']}</div>}
+            {artwork.Collection && <div><span className="font-semibold">Collection:</span> {artwork.Collection}</div>}
+            {artwork.Date && <div><span className="font-semibold">Date:</span> {artwork.Date}</div>}
+            {artwork.Medium && <div><span className="font-semibold">Medium:</span> {artwork.Medium}</div>}
+            {artwork.Dimensions && <div><span className="font-semibold">Dimensions:</span> {artwork.Dimensions}</div>}
+            {artwork['Gallery Location'] && <div><span className="font-semibold">Gallery:</span> {artwork['Gallery Location']}</div>}
           </div>
 
-          {/* Micro Summary */}
           {artwork['Micro Summary'] && (
             <div>
               <h3 className="font-semibold text-lg mb-2">Micro Summary</h3>
@@ -146,7 +109,6 @@ export default function ArtworkDetail() {
             </div>
           )}
 
-          {/* Artwork Description */}
           {artwork['Artwork Description'] && (
             <div>
               <h3 className="font-semibold text-lg mb-2">Description</h3>
@@ -154,7 +116,6 @@ export default function ArtworkDetail() {
             </div>
           )}
 
-          {/* Artist Biography */}
           {artwork['Artist Biography'] && (
             <div>
               <h3 className="font-semibold text-lg mb-2">About the Artist</h3>
@@ -162,7 +123,6 @@ export default function ArtworkDetail() {
             </div>
           )}
 
-          {/* Tour Guidance */}
           {artwork['Tour Guidance'] && (
             <div className="bg-muted p-4 rounded-lg">
               <h3 className="font-semibold text-lg mb-2">Tour Guidance</h3>
@@ -170,7 +130,6 @@ export default function ArtworkDetail() {
             </div>
           )}
 
-          {/* Connections */}
           {artwork.Connections && (
             <div>
               <h3 className="font-semibold text-lg mb-2">Connections</h3>
@@ -178,15 +137,6 @@ export default function ArtworkDetail() {
             </div>
           )}
 
-          {/* Contemporary Context */}
-          {artwork['Contemporary Context'] && (
-            <div>
-              <h3 className="font-semibold text-lg mb-2">Contemporary Context</h3>
-              <p className="whitespace-pre-wrap">{artwork['Contemporary Context']}</p>
-            </div>
-          )}
-
-          {/* Historical Context */}
           {artwork['Historical Context'] && (
             <div>
               <h3 className="font-semibold text-lg mb-2">Historical Context</h3>
@@ -194,76 +144,42 @@ export default function ArtworkDetail() {
             </div>
           )}
 
-          {/* Cultural Context */}
-          {artwork['Cultural Context'] && (
-            <div>
-              <h3 className="font-semibold text-lg mb-2">Cultural Context</h3>
-              <p className="whitespace-pre-wrap">{artwork['Cultural Context']}</p>
+          {artwork['Online Resources'] && artwork['Online Resources'].length > 0 && (
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <h3 className="font-semibold text-lg mb-3">Online Resources</h3>
+              <div className="space-y-3">
+                {artwork['Online Resources'].map((resource, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded flex-shrink-0 mt-0.5">
+                      {typeLabels[resource.type] || resource.type}
+                    </span>
+                    <div className="min-w-0">
+                      <a href={resource.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-medium block">
+                        {resource.title}
+                      </a>
+                      {resource.description && (
+                        <p className="text-sm text-muted-foreground mt-0.5">{resource.description}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
-          {/* Cultural/Philosophical Context */}
-          {artwork['Cultural/Philosophical Context'] && (
-            <div>
-              <h3 className="font-semibold text-lg mb-2">Cultural/Philosophical Context</h3>
-              <p className="whitespace-pre-wrap">{artwork['Cultural/Philosophical Context']}</p>
-            </div>
-          )}
-
-          {/* Philosophical Context */}
-          {artwork['Philosophical Context'] && (
-            <div>
-              <h3 className="font-semibold text-lg mb-2">Philosophical Context</h3>
-              <p className="whitespace-pre-wrap">{artwork['Philosophical Context']}</p>
-            </div>
-          )}
-
-          {/* Related Poems */}
-          {artwork['Related Poems'] && (
-            <div>
-              <h3 className="font-semibold text-lg mb-2">Related Poems</h3>
-              <p className="whitespace-pre-wrap">{artwork['Related Poems']}</p>
-            </div>
-          )}
-
-          {/* Period Music Links */}
-          {artwork['Period Music Links'] && (
-            <div>
-              <h3 className="font-semibold text-lg mb-2">Period Music Links</h3>
-              <p className="whitespace-pre-wrap">{artwork['Period Music Links']}</p>
-            </div>
-          )}
-
-          {/* Supplemental Information */}
-          {artwork['Supplemental Information'] && (
-            <div>
-              <h3 className="font-semibold text-lg mb-2">Supplemental Information</h3>
-              <p className="whitespace-pre-wrap">{artwork['Supplemental Information']}</p>
-            </div>
-          )}
-
-          {/* URL */}
           {artwork.URL && (
             <div>
               <h3 className="font-semibold text-sm mb-2">More Information</h3>
-              <a 
-                href={artwork.URL} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline text-sm break-all"
-              >
+              <a href={artwork.URL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-sm break-all">
                 {artwork.URL}
               </a>
             </div>
           )}
 
-          {/* Sources/Bibliography */}
           {artwork['Sources/Bibliography'] && (
             <div className="border-t pt-4">
               <h3 className="font-semibold text-sm mb-2">Sources & Bibliography</h3>
-              <p className="text-sm text-muted-foreground whitespace-pre-wrap">
-                {artwork['Sources/Bibliography']}
-              </p>
+              <p className="text-sm text-muted-foreground whitespace-pre-wrap">{artwork['Sources/Bibliography']}</p>
             </div>
           )}
         </CardContent>

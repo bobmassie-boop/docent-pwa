@@ -12,7 +12,7 @@ export default function LibraryBrowser() {
   const [books, setBooks] = useState<LibraryBook[]>([]);
   const [filteredBooks, setFilteredBooks] = useState<LibraryBook[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState<'title' | 'author' | 'callNumber'>('title');
+  const [sortBy, setSortBy] = useState<'title' | 'author' | 'callNumber'>('author');
   const [filterPhysical, setFilterPhysical] = useState<'all' | 'have' | 'need'>('all');
   const [loading, setLoading] = useState(true);
   const [expandedBook, setExpandedBook] = useState<string | null>(null);

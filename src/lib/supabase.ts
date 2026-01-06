@@ -43,6 +43,14 @@ export interface Artwork {
   'Image URL'?: string;
   thumbnail?: string;
   imageUrl?: string;
+  'Online Resources'?: OnlineResource[];
+}
+
+export interface OnlineResource {
+  type: string;
+  title: string;
+  url: string;
+  description?: string;
 }
 
 /**
@@ -89,7 +97,8 @@ export async function fetchArtworks(): Promise<Artwork[]> {
       'Image Upload': record['Image Upload'],
       'Image URL': record['Image URL'],
       thumbnail: record['Image Upload'] || record['Image URL'] || record.Image,
-      imageUrl: record['Image Upload'] || record['Image URL'] || record.Image
+      imageUrl: record['Image Upload'] || record['Image URL'] || record.Image,
+      'Online Resources': record['Online Resources'] || []
     }));
   } catch (error) {
     console.error('Error fetching artworks from Supabase:', error);
@@ -145,7 +154,8 @@ export async function fetchArtworkById(id: string): Promise<Artwork | null> {
       'Image Upload': data['Image Upload'],
       'Image URL': data['Image URL'],
       thumbnail: data['Image Upload'] || data['Image URL'] || data.Image,
-      imageUrl: data['Image Upload'] || data['Image URL'] || data.Image
+      imageUrl: data['Image Upload'] || data['Image URL'] || data.Image,
+      'Online Resources': data['Online Resources'] || []
     };
   } catch (error) {
     console.error('Error fetching artwork from Supabase:', error);
