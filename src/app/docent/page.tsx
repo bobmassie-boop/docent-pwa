@@ -314,8 +314,8 @@ export default function DocentBrowser() {
           </div>
         </div>
 
-        {/* Library Button - Mobile: full width below filters, Desktop: inline */}
-        <div className="md:flex md:justify-start">
+        {/* Resource Buttons - Library and Artists */}
+        <div className="flex flex-col md:flex-row gap-3">
           <Link href="/docent/library">
             <Button
               variant="outline"
@@ -325,6 +325,18 @@ export default function DocentBrowser() {
               <div className="text-left">
                 <div className="font-semibold">Browse Docent Library</div>
                 <div className="text-xs text-muted-foreground">Find books &amp; references</div>
+              </div>
+            </Button>
+          </Link>
+          <Link href="/docent/artists">
+            <Button
+              variant="outline"
+              className="w-full md:w-auto flex items-center gap-2 bg-blue-50 border-blue-200 hover:bg-blue-100"
+            >
+              <span className="text-xl">🎨</span>
+              <div className="text-left">
+                <div className="font-semibold">Artist Gallery</div>
+                <div className="text-xs text-muted-foreground">Explore artist biographies</div>
               </div>
             </Button>
           </Link>
