@@ -6,11 +6,19 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      return NextResponse.json({
+        error: 'Missing environment variables',
+        hasUrl: !!supabaseUrl,
+        hasKey: !!supabaseKey
+      }, { status: 500 });
+    }
+
     // Create client inside function to ensure env vars are available at runtime
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { data, error } = await supabase
       .from('Docent_library_catalog')
