@@ -19,35 +19,31 @@ export interface Artist {
 
 export async function GET() {
   try {
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      return NextResponse.json({
+        error: 'Missing environment variables',
+        hasUrl: !!supabaseUrl,
+        hasKey: !!supabaseKey
+      }, { status: 500 });
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { data: artworks, error } = await supabase
       .from('Artworks')
-      .select(`
-        ID,
-        Title,
-        "Artist (Display)",
-        "Artist Last Name",
-        "Artist Biography",
-        "Birth Date",
-        "Death Date",
-        Nationality,
-        "Image Upload",
-        "Image URL",
-        Image
-      `);
+      .select('*');
 
     if (error) {
-      throw new Error(`Supabase error: ${error.message}`);
+      throw new Error('Supabase error: ' + error.message);
     }
 
     // Group by artist
     const artistMap = new Map<string, Artist>();
 
-    (artworks || []).forEach(artwork => {
+    (artworks || []).forEach((artwork: any) => {
       const name = artwork['Artist (Display)'];
       if (!name) return;
 
