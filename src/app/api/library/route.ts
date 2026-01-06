@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export async function GET() {
   try {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     if (!supabaseUrl || !supabaseKey) {
       return NextResponse.json({
@@ -17,7 +17,6 @@ export async function GET() {
       }, { status: 500 });
     }
 
-    // Create client inside function to ensure env vars are available at runtime
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { data, error } = await supabase
