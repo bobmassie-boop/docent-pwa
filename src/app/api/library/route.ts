@@ -44,15 +44,22 @@ export async function GET() {
       coverUrl: record['Cover URL']
     }));
 
-    // Sort books: titled books first (alphabetically), untitled/empty at the bottom
+    // Sort books: real titles first (alphabetically), placeholder/unknown titles at the bottom
+    const isPlaceholderTitle = (title: string) => {
+      if (!title || !title.trim()) return true;
+      const t = title.trim().toLowerCase();
+      // Treat bracketed titles like [Unknown], [Book], [Partial], [...] as placeholders
+      return t.startsWith('[') || t === 'unknown' || t === 'untitled';
+    };
+
     books.sort((a, b) => {
-      const aHasTitle = a.title && a.title.trim().length > 0;
-      const bHasTitle = b.title && b.title.trim().length > 0;
+      const aIsPlaceholder = isPlaceholderTitle(a.title);
+      const bIsPlaceholder = isPlaceholderTitle(b.title);
 
-      if (aHasTitle && !bHasTitle) return -1;
-      if (!aHasTitle && bHasTitle) return 1;
+      if (!aIsPlaceholder && bIsPlaceholder) return -1;
+      if (aIsPlaceholder && !bIsPlaceholder) return 1;
 
-      // Both have titles or both don't - sort alphabetically
+      // Both have real titles or both are placeholders - sort alphabetically
       return (a.title || '').localeCompare(b.title || '');
     });
 
