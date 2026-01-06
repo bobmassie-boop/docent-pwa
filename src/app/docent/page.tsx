@@ -314,6 +314,22 @@ export default function DocentBrowser() {
           </div>
         </div>
 
+        {/* Library Button - Mobile: full width below filters, Desktop: inline */}
+        <div className="md:flex md:justify-start">
+          <Link href="/docent/library">
+            <Button
+              variant="outline"
+              className="w-full md:w-auto flex items-center gap-2 bg-amber-50 border-amber-200 hover:bg-amber-100"
+            >
+              <span className="text-xl">📚</span>
+              <div className="text-left">
+                <div className="font-semibold">Browse Docent Library</div>
+                <div className="text-xs text-muted-foreground">Find books &amp; references</div>
+              </div>
+            </Button>
+          </Link>
+        </div>
+
 
         {/* Data info */}
         {lastSync && (
