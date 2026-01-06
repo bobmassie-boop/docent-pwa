@@ -22,7 +22,7 @@ export async function GET() {
 
     const books = (data || []).map(record => ({
       book_id: String(record.book_id),
-      title: record.title || 'Untitled',
+      title: record.title || '',
       author: record['Author(s)'] || '',
       publisher: record.Publisher,
       year: record.Year,
@@ -36,6 +36,18 @@ export async function GET() {
       linkedArtworks: record['Linked Artworks'],
       coverUrl: record['Cover URL']
     }));
+
+    // Sort books: titled books first (alphabetically), untitled/empty at the bottom
+    books.sort((a, b) => {
+      const aHasTitle = a.title && a.title.trim().length > 0;
+      const bHasTitle = b.title && b.title.trim().length > 0;
+
+      if (aHasTitle && !bHasTitle) return -1;
+      if (!aHasTitle && bHasTitle) return 1;
+
+      // Both have titles or both don't - sort alphabetically
+      return (a.title || '').localeCompare(b.title || '');
+    });
 
     return NextResponse.json({
       books,
