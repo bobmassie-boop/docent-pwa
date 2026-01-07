@@ -49,42 +49,42 @@ export default function DocentBrowser() {
     // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
     const genreScenes = [
       'the poetry reading', 'hotel lobby', "new year's shooter", 'tidying up',
-      'two disciples at the tomb', 'preparing for the matinee', 'hauptmann must die',
+      'two disciples at the tomb (the kneeling disciple)', 'preparing for the matinee', 'hauptmann must die',
       'glow of gold, gleam of pearl', 'herman and verman', 'promenade', 'reclining nude',
-      'sunlight', 'dolly & rach', 'girl at the piano', 'girl at the piano, recording sound',
-      'he is risen', 'reflection', 'the artist party', 'the bacidae', 'the blue tiger',
-      'the boat builders', 'the love song', 'untitled (the birth)', "judith or cowper's oak",
+      'sunlight', 'dolly & rach', 'girl at the piano', 'girl at the piano: recording sound',
+      'he is risen', 'reflections', "the artist's party", 'the bacidae', 'the blue tiger',
+      'the boat builders', 'the love song', 'untitled (the birth)', "judith, or cowper's oak",
       'our flag', 'concretion', 'henry looked unhitching', 'new york, new haven and hartford',
-      'street light', 'the statuette'
+      'street light', 'the statuette', 'the seiner (the net)'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
     // Specific artwork overrides - Sculptures
     const sculptures = [
-      'the mountain man', 'gammon', 'framed mirror', 'bacchante and infant faun', 'diana'
+      'the mountain man', 'gamin', 'framed mirror', 'bacchante and infant faun', 'diana'
     ];
     if (sculptures.some(name => t === name)) return 'sculpture';
 
     // Specific artwork overrides - Cityscapes
     const cityscapes = [
-      'harlem at night', 'paris, hotel de ville', 'rainy night, etaples',
-      'venice, santa maria', 'venice, santa maria della salute', 'venice, the rialto',
-      'washington st., indianapolis at dusk', 'dunstaffnage', 'kenilworth castle',
+      'harlem at night', 'paris: hôtel de ville', 'rainy night, etaples',
+      'venice: santa maria della salute from the grand canal', 'venice: the rialto',
+      'washington street, indianapolis at dusk', 'dunstaffnage', 'kenilworth castle',
       'monday morning', 'san giorgio, verona', 'the canal, morning effect',
       'west front, bath abbey', 'worcester from the river severn',
-      'cross at the entrance to hereford', 'fontainebleau, the departure of napoleon',
-      "king edgar's gate, worcestershire", 'ober wesel on the rhine',
-      'philae - view the temples from the south', 'west window, worcester cathedral'
+      'cross at the entrance to hereford', 'fontainebleau: the departure of napoleon',
+      "king edgar's gate, worcester", 'oberwesel on the rhine',
+      'philae: a view of the temples from the south', 'west window, worcester cathedral'
     ];
     if (cityscapes.some(name => t === name)) return 'cityscape';
 
     // Specific artwork overrides - Landscapes
     const landscapes = [
       'bellinzona', 'cliff rock—appledore', 'cliff rock - appledore',
-      'fountains abbey, yorkshire', 'glacier de rhone and the galenstock',
-      'hurricane', 'lock, long', 'loch long', 'martins-wand, near innsbruck',
-      'matlock', 'pool in the adirondacks', 'quarry at byram', 'remagen, arpel and lenz',
-      "tim's nocturne", 'the marksberg', 'the olive grove', 'the pioneers', 'the rainbow',
+      'fountains abbey, yorkshire', 'glacier du rhone and the galenstock, from the furka pass road',
+      'hurricane', 'lock, long', 'loch long', 'martinswand, near innsbruck',
+      'matlock', 'pool in the adirondacks', 'quarry at byram', 'remagen, erpel and linz',
+      'thames nocturne', 'the marxburg', 'the olive grove', 'the pioneers', 'the rainbow',
       'scene in indianapolis', 'fall of the trees, yorkshire', 'fall of the tees, yorkshire',
       'rosslyn castle'
     ];
@@ -93,8 +93,8 @@ export default function DocentBrowser() {
     // Specific artwork overrides - Portraits
     const portraits = [
       'dorothy', 'indian girl', 'little brown girl', 'margaret mckittrick',
-      'marianne ashley walker', 'j.m.w. turner at drawing table',
-      'the pianist, stanley addicks', 'study of a young woman',
+      'marianne ashley walker', 'j. m. w. turner at a drawing table (recto), mrs. monro asleep (verso)',
+      'the pianist (stanley addicks)', 'study of a young woman',
       'george washington at princeton'
     ];
     if (portraits.some(name => t === name)) return 'portrait';
