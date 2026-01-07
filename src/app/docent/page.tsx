@@ -45,12 +45,72 @@ export default function DocentBrowser() {
     if (!title) return 'other';
     const t = title.toLowerCase();
     const m = (mediumStr || '').toLowerCase();
+
+    // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
+    if (t === 'the poetry reading' || t === 'hotel lobby' || t === "new year's shooter" ||
+        t === 'tidying up' || t === 'two disciples at the tomb' || t === 'preparing for the matinee' ||
+        t === 'hauptmann must die') return 'genre';
+
+    // Specific artwork overrides - Sculptures (including those in mythological)
+    if (t === 'the mountain man' || t === 'george washington at princeton' || t === 'gammon' ||
+        t === 'the statuette') return 'sculpture';
+
+    // Specific artwork overrides - Cityscapes
+    if (t === 'harlem at night' || t === 'paris, hotel de ville' || t === 'street light' ||
+        t === 'rainy night, etaples' || t === 'venice, santa maria' || t === 'venice, the rialto' ||
+        t === 'scene in indianapolis' || t === 'washington st., indianapolis at dusk') return 'cityscape';
+
+    // Specific artwork overrides - Landscapes
+    if (t === 'bellinzona' || t === 'cliff rock—appledore' || t === 'cliff rock - appledore' ||
+        t === 'dunstaffnage' || t === 'fountains abbey, yorkshire' ||
+        t === 'fontainebleau, the departure of napoleon' || t === 'glacier de rhone and the galenstock' ||
+        t === 'hurricane' || t === 'lock, long' || t === 'martins-wand, near innsbruck' ||
+        t === 'matlock' || t === 'new york, new haven and hartford' ||
+        t === 'ober wesel on the rhine' || t === 'philae - view the temples from the south' ||
+        t === 'pool in the adirondacks' || t === 'quarry at byram' || t === 'remagen, arpel and lenz' ||
+        t === 'san giorgio, verona' || t === "tim's nocturne" || t === 'the marksberg' ||
+        t === 'the olive grove' || t === 'the pioneers' || t === 'the rainbow') return 'landscape';
+
+    // Specific artwork overrides - Portraits
+    if (t === 'dolly and rach' || t === 'dorothy' || t === 'indian girl' ||
+        t === 'little brown girl' || t === 'margaret mckittrick' || t === 'marianne ashley walker' ||
+        t === 'glow of gold, gleam of pearl' || t === 'j.m.w. turner at drawing table' ||
+        t === 'the pianist, stanley addicks' || t === 'study of a young woman' ||
+        t === 'sunlight' || t === 'promenade' || t === 'reclining nude' ||
+        t === 'herman and verman' || t === 'hitching') return 'portrait';
+
+    // Specific artwork overrides - Still Life
+    if (t === 'jimson weed') return 'stilllife';
+
+    // General pattern matching - Portraits
     if (t.includes('portrait') || t.includes('self-portrait') || /^(mrs|mr|miss|dr|colonel|madame|mme)\b/.test(t)) return 'portrait';
-    if (t.includes('sea') || t.includes('coast') || t.includes('harbor') || t.includes('ship') || t.includes('marine') || t.includes('beach') || t.includes('ocean') || t.includes('bay') || t.includes('fishing') || t.includes('whaler') || t.includes('sail') || t.includes('vessel')) return 'seascape';
-    if (t.includes('landscape') || t.includes('mountain') || t.includes('valley') || t.includes('river') || t.includes('lake') || t.includes('forest') || t.includes('sunrise') || t.includes('sunset') || t.includes('morning') || t.includes('evening') || t.includes('autumn') || t.includes('winter') || t.includes('spring') || t.includes('summer') || t.includes('cloud') || t.includes('storm') || t.includes('snow') || t.includes('meadow') || t.includes('hill') || t.includes('creek') || t.includes('abbey') || t.includes('castle') || t.includes('ruins')) return 'landscape';
-    if (t.includes('still life') || t.includes('flower') || t.includes('fruit') || t.includes('melon') || t.includes('vase') || t.includes('bouquet')) return 'stilllife';
-    if (t.includes('angel') || t.includes('christ') || t.includes('madonna') || t.includes('resurrection') || t.includes('venus') || t.includes('bacch') || t.includes('europa') || t.includes('calypso') || t.includes('nymph') || t.includes('apollo') || t.includes('diana')) return 'mythological';
+
+    // General pattern matching - Seascapes
+    if (t.includes('sea') || t.includes('coast') || t.includes('harbor') || t.includes('ship') ||
+        t.includes('marine') || t.includes('beach') || t.includes('ocean') || t.includes('bay') ||
+        t.includes('fishing') || t.includes('whaler') || t.includes('sail') || t.includes('vessel')) return 'seascape';
+
+    // General pattern matching - Landscapes
+    if (t.includes('landscape') || t.includes('mountain') || t.includes('valley') || t.includes('river') ||
+        t.includes('lake') || t.includes('forest') || t.includes('sunrise') || t.includes('sunset') ||
+        t.includes('morning') || t.includes('evening') || t.includes('autumn') || t.includes('winter') ||
+        t.includes('spring') || t.includes('summer') || t.includes('cloud') || t.includes('storm') ||
+        t.includes('snow') || t.includes('meadow') || t.includes('hill') || t.includes('creek') ||
+        t.includes('abbey') || t.includes('castle') || t.includes('ruins') || t.includes('grove') ||
+        t.includes('pool') || t.includes('quarry')) return 'landscape';
+
+    // General pattern matching - Still Life
+    if (t.includes('still life') || t.includes('flower') || t.includes('fruit') ||
+        t.includes('melon') || t.includes('vase') || t.includes('bouquet')) return 'stilllife';
+
+    // General pattern matching - Religious & Mythological
+    if (t.includes('angel') || t.includes('christ') || t.includes('madonna') || t.includes('resurrection') ||
+        t.includes('venus') || t.includes('bacch') || t.includes('europa') || t.includes('calypso') ||
+        t.includes('nymph') || t.includes('apollo') || t.includes('diana')) return 'mythological';
+
+    // Medium-based categorization - Sculpture
     if (m.includes('bronze') || m.includes('marble') || m.includes('sculpture')) return 'sculpture';
+
     return 'other';
   }
 
@@ -335,8 +395,10 @@ export default function DocentBrowser() {
               <option value="">All Subjects</option>
               <option value="portrait">Portraits</option>
               <option value="landscape">Landscapes</option>
+              <option value="cityscape">Cityscapes</option>
               <option value="seascape">Seascapes & Marine</option>
               <option value="stilllife">Still Life</option>
+              <option value="genre">Genre Scenes</option>
               <option value="mythological">Religious & Mythological</option>
               <option value="sculpture">Sculpture</option>
               <option value="other">Other</option>
