@@ -51,9 +51,9 @@ export default function DocentBrowser() {
       'the poetry reading', 'hotel lobby', "new year's shooter", 'tidying up',
       'two disciples at the tomb', 'preparing for the matinee', 'hauptmann must die',
       'glow of gold, gleam of pearl', 'herman and verman', 'promenade', 'reclining nude',
-      'sunlight', 'dolly and rach', 'girl at the piano', 'he is risen',
-      'reflection', 'the artist party', 'the bacidae', 'the blue tiger', 'the boat builders',
-      'the love song', 'untitled (the birth)', "judith or cowper's oak",
+      'sunlight', 'dolly and rach', 'girl at the piano', 'girl at the piano, recording sound',
+      'he is risen', 'reflection', 'the artist party', 'the bacidae', 'the blue tiger',
+      'the boat builders', 'the love song', 'untitled (the birth)', "judith or cowper's oak",
       'our flag', 'concretions', 'henry looked unhitching', 'new york, new haven and hartford',
       'street light', 'the statuette'
     ];
@@ -85,7 +85,8 @@ export default function DocentBrowser() {
       'hurricane', 'lock, long', 'loch long', 'martins-wand, near innsbruck',
       'matlock', 'pool in the adirondacks', 'quarry at byram', 'remagen, arpel and lenz',
       "tim's nocturne", 'the marksberg', 'the olive grove', 'the pioneers', 'the rainbow',
-      'scene in indianapolis', 'fall of the trees, yorkshire', 'rosslyn castle'
+      'scene in indianapolis', 'fall of the trees, yorkshire', 'fall of the tees, yorkshire',
+      'rosslyn castle'
     ];
     if (landscapes.some(name => t === name)) return 'landscape';
 
