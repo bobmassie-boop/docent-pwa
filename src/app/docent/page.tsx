@@ -51,10 +51,10 @@ export default function DocentBrowser() {
       'the poetry reading', 'hotel lobby', "new year's shooter", 'tidying up',
       'two disciples at the tomb', 'preparing for the matinee', 'hauptmann must die',
       'glow of gold, gleam of pearl', 'herman and verman', 'promenade', 'reclining nude',
-      'sunlight', 'dolly and rach', 'girl at the piano', 'girl at the piano, recording sound',
+      'sunlight', 'dolly & rach', 'girl at the piano', 'girl at the piano, recording sound',
       'he is risen', 'reflection', 'the artist party', 'the bacidae', 'the blue tiger',
       'the boat builders', 'the love song', 'untitled (the birth)', "judith or cowper's oak",
-      'our flag', 'concretions', 'henry looked unhitching', 'new york, new haven and hartford',
+      'our flag', 'concretion', 'henry looked unhitching', 'new york, new haven and hartford',
       'street light', 'the statuette'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
