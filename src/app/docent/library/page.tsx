@@ -13,7 +13,6 @@ export default function LibraryBrowser() {
   const [filteredBooks, setFilteredBooks] = useState<LibraryBook[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'title' | 'author' | 'callNumber'>('author');
-  const [filterPhysical, setFilterPhysical] = useState<'all' | 'have' | 'need'>('all');
   const [subjectCategory, setSubjectCategory] = useState('');
   const [artMovement, setArtMovement] = useState('');
   const [loading, setLoading] = useState(true);
@@ -36,13 +35,6 @@ export default function LibraryBrowser() {
         book.subjectTags?.toLowerCase().includes(query) ||
         book.artists?.toLowerCase().includes(query)
       );
-    }
-
-    // Apply physical copy filter
-    if (filterPhysical === 'have') {
-      filtered = filtered.filter(book => book.physicalCopy === 'Have');
-    } else if (filterPhysical === 'need') {
-      filtered = filtered.filter(book => book.physicalCopy !== 'Have');
     }
 
     // Apply subject category filter
@@ -94,7 +86,7 @@ export default function LibraryBrowser() {
     });
 
     setFilteredBooks(sorted);
-  }, [searchQuery, books, sortBy, filterPhysical, subjectCategory, artMovement]);
+  }, [searchQuery, books, sortBy, subjectCategory, artMovement]);
 
   async function loadBooks() {
     try {
@@ -170,19 +162,6 @@ export default function LibraryBrowser() {
               <option value="title">Title A-Z</option>
               <option value="author">Author A-Z</option>
               <option value="callNumber">Call Number</option>
-            </select>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <label className="text-sm font-medium">Physical Copy:</label>
-            <select
-              value={filterPhysical}
-              onChange={(e) => setFilterPhysical(e.target.value as any)}
-              className="px-3 py-2 border rounded-md text-sm h-9"
-            >
-              <option value="all">All Books</option>
-              <option value="have">Available</option>
-              <option value="need">Not Available</option>
             </select>
           </div>
 
@@ -275,11 +254,6 @@ export default function LibraryBrowser() {
                       {book.callNumber && (
                         <span className="text-muted-foreground">
                           📍 Call#: <span className="font-medium">{book.callNumber}</span>
-                        </span>
-                      )}
-                      {book.physicalCopy === 'Have' && (
-                        <span className="text-green-600">
-                          ✓ Physical Copy Available
                         </span>
                       )}
                       {book.year && (
