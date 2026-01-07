@@ -14,6 +14,8 @@ export default function LibraryBrowser() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'title' | 'author' | 'callNumber'>('author');
   const [filterPhysical, setFilterPhysical] = useState<'all' | 'have' | 'need'>('all');
+  const [subjectCategory, setSubjectCategory] = useState('');
+  const [artMovement, setArtMovement] = useState('');
   const [loading, setLoading] = useState(true);
   const [expandedBook, setExpandedBook] = useState<string | null>(null);
 
@@ -43,6 +45,40 @@ export default function LibraryBrowser() {
       filtered = filtered.filter(book => book.physicalCopy !== 'Have');
     }
 
+    // Apply subject category filter
+    if (subjectCategory) {
+      filtered = filtered.filter(book => {
+        const tags = (book.subjectTags || '').toLowerCase();
+        switch (subjectCategory) {
+          case 'european': return tags.includes('european');
+          case 'american': return tags.includes('american');
+          case 'contemporary': return tags.includes('contemporary');
+          case 'reference': return tags.includes('reference');
+          case 'african': return tags.includes('african');
+          case 'asian': return tags.includes('asian');
+          case 'painting': return tags.includes('painting');
+          default: return true;
+        }
+      });
+    }
+
+    // Apply art movement filter
+    if (artMovement) {
+      filtered = filtered.filter(book => {
+        const movements = (book.artMovements || '').toLowerCase();
+        switch (artMovement) {
+          case 'impressionism': return movements.includes('impressionism');
+          case 'contemporary': return movements.includes('contemporary');
+          case 'renaissance': return movements.includes('renaissance');
+          case 'modern': return movements.includes('modern');
+          case 'realism': return movements.includes('realism');
+          case 'baroque': return movements.includes('baroque');
+          case 'romanticism': return movements.includes('romantic');
+          default: return true;
+        }
+      });
+    }
+
     // Apply sorting
     const sorted = [...filtered].sort((a, b) => {
       switch (sortBy) {
@@ -58,7 +94,7 @@ export default function LibraryBrowser() {
     });
 
     setFilteredBooks(sorted);
-  }, [searchQuery, books, sortBy, filterPhysical]);
+  }, [searchQuery, books, sortBy, filterPhysical, subjectCategory, artMovement]);
 
   async function loadBooks() {
     try {
@@ -147,6 +183,42 @@ export default function LibraryBrowser() {
               <option value="all">All Books</option>
               <option value="have">Available</option>
               <option value="need">Not Available</option>
+            </select>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-medium">Subject:</label>
+            <select
+              value={subjectCategory}
+              onChange={(e) => setSubjectCategory(e.target.value)}
+              className="px-3 py-2 border rounded-md text-sm h-9"
+            >
+              <option value="">All Subjects</option>
+              <option value="european">European Art</option>
+              <option value="american">American Art</option>
+              <option value="contemporary">Contemporary Art</option>
+              <option value="reference">General Reference</option>
+              <option value="painting">Painting</option>
+              <option value="african">African Art</option>
+              <option value="asian">Asian Art</option>
+            </select>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-medium">Movement:</label>
+            <select
+              value={artMovement}
+              onChange={(e) => setArtMovement(e.target.value)}
+              className="px-3 py-2 border rounded-md text-sm h-9"
+            >
+              <option value="">All Movements</option>
+              <option value="impressionism">Impressionism</option>
+              <option value="contemporary">Contemporary</option>
+              <option value="renaissance">Renaissance</option>
+              <option value="modern">Modern Art</option>
+              <option value="realism">Realism</option>
+              <option value="baroque">Baroque</option>
+              <option value="romanticism">Romanticism</option>
             </select>
           </div>
         </div>
