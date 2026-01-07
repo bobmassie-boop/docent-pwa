@@ -43,19 +43,26 @@ export default function DocentBrowser() {
   // Helper function to categorize artwork by subject
   function getSubjectCategory(title: string | undefined, mediumStr: string | undefined): string {
     if (!title) return 'other';
-    const t = title.toLowerCase();
+    // Normalize curly apostrophes to straight for consistent matching
+    const t = title.toLowerCase().replace(/[\u2018\u2019]/g, "'");
     const m = (mediumStr || '').toLowerCase();
+
+    // Specific artwork overrides - Contemporary/Abstract
+    const contemporary = [
+      'composition 1'
+    ];
+    if (contemporary.some(name => t === name)) return 'contemporary';
 
     // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
     const genreScenes = [
-      'the poetry reading', 'hotel lobby', "new year's shooter", 'tidying up',
+      'the poetry reading', 'hotel lobby', "new year’s shooter", 'tidying up',
       'two disciples at the tomb (the kneeling disciple)', 'preparing for the matinee', 'hauptmann must die',
       'glow of gold, gleam of pearl', 'herman and verman', 'promenade', 'reclining nude',
       'sunlight', 'dolly & rach', 'girl at the piano', 'girl at the piano: recording sound',
       'he is risen', 'reflections', "the artist's party", 'the bacidae', 'the blue tiger',
       'the boat builders', 'the love song', 'untitled (the birth)', "judith, or cowper's oak",
-      'our flag', 'concretion', 'henry looked unhitching', 'new york, new haven and hartford',
-      'street light', 'the statuette', 'the seiner (the net)'
+      'our flag', 'concretion', 'henry look unhitching', 'new york, new haven and hartford',
+      'streetlight', 'the statuette', 'the seiner (the net)'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
@@ -418,6 +425,7 @@ export default function DocentBrowser() {
               <option value="seascape">Seascapes & Marine</option>
               <option value="stilllife">Still Life</option>
               <option value="genre">Genre Scenes</option>
+              <option value="contemporary">Contemporary/Abstract</option>
               <option value="mythological">Religious & Mythological</option>
               <option value="sculpture">Sculpture</option>
               <option value="other">Other</option>
