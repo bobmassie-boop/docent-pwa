@@ -51,16 +51,17 @@ export default function DocentBrowser() {
       'the poetry reading', 'hotel lobby', "new year's shooter", 'tidying up',
       'two disciples at the tomb', 'preparing for the matinee', 'hauptmann must die',
       'glow of gold, gleam of pearl', 'herman and verman', 'promenade', 'reclining nude',
-      'sunlight', 'dolly and rach', 'girl at the piano', 'he is risen', 'henry looked hitching',
+      'sunlight', 'dolly and rach', 'girl at the piano', 'he is risen',
       'reflection', 'the artist party', 'the bacidae', 'the blue tiger', 'the boat builders',
-      'the love song', 'untitled (the birth)', "judith or cowper's oak"
+      'the love song', 'untitled (the birth)', "judith or cowper's oak",
+      'our flag', 'concretions', 'henry looked unhitching', 'new york, new haven and hartford',
+      'street light', 'the statuette'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
     // Specific artwork overrides - Sculptures
     const sculptures = [
-      'the mountain man', 'george washington at princeton', 'gammon', 'the statuette',
-      'framed mirror', 'bacchante and infant faun', 'diana'
+      'the mountain man', 'gammon', 'framed mirror', 'bacchante and infant faun', 'diana'
     ];
     if (sculptures.some(name => t === name)) return 'sculpture';
 
@@ -73,8 +74,7 @@ export default function DocentBrowser() {
       'west front, bath abbey', 'worcester from the river severn',
       'cross at the entrance to hereford', 'fontainebleau, the departure of napoleon',
       "king edgar's gate, worcestershire", 'ober wesel on the rhine',
-      'philae - view the temples from the south', 'street light',
-      'west window, worcester cathedral'
+      'philae - view the temples from the south', 'west window, worcester cathedral'
     ];
     if (cityscapes.some(name => t === name)) return 'cityscape';
 
@@ -85,7 +85,7 @@ export default function DocentBrowser() {
       'hurricane', 'lock, long', 'loch long', 'martins-wand, near innsbruck',
       'matlock', 'pool in the adirondacks', 'quarry at byram', 'remagen, arpel and lenz',
       "tim's nocturne", 'the marksberg', 'the olive grove', 'the pioneers', 'the rainbow',
-      'scene in indianapolis'
+      'scene in indianapolis', 'fall of the trees, yorkshire', 'rosslyn castle'
     ];
     if (landscapes.some(name => t === name)) return 'landscape';
 
@@ -93,7 +93,8 @@ export default function DocentBrowser() {
     const portraits = [
       'dorothy', 'indian girl', 'little brown girl', 'margaret mckittrick',
       'marianne ashley walker', 'j.m.w. turner at drawing table',
-      'the pianist, stanley addicks', 'study of a young woman', 'our flag'
+      'the pianist, stanley addicks', 'study of a young woman',
+      'george washington at princeton'
     ];
     if (portraits.some(name => t === name)) return 'portrait';
 
