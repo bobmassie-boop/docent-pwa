@@ -47,37 +47,55 @@ export default function DocentBrowser() {
     const m = (mediumStr || '').toLowerCase();
 
     // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
-    if (t === 'the poetry reading' || t === 'hotel lobby' || t === "new year's shooter" ||
-        t === 'tidying up' || t === 'two disciples at the tomb' || t === 'preparing for the matinee' ||
-        t === 'hauptmann must die') return 'genre';
+    const genreScenes = [
+      'the poetry reading', 'hotel lobby', "new year's shooter", 'tidying up',
+      'two disciples at the tomb', 'preparing for the matinee', 'hauptmann must die',
+      'glow of gold, gleam of pearl', 'herman and verman', 'promenade', 'reclining nude',
+      'sunlight', 'dolly and rach', 'girl at the piano', 'he is risen', 'henry looked hitching',
+      'reflection', 'the artist party', 'the bacidae', 'the blue tiger', 'the boat builders',
+      'the love song', 'untitled (the birth)', "judith or cowper's oak"
+    ];
+    if (genreScenes.some(name => t === name)) return 'genre';
 
-    // Specific artwork overrides - Sculptures (including those in mythological)
-    if (t === 'the mountain man' || t === 'george washington at princeton' || t === 'gammon' ||
-        t === 'the statuette') return 'sculpture';
+    // Specific artwork overrides - Sculptures
+    const sculptures = [
+      'the mountain man', 'george washington at princeton', 'gammon', 'the statuette',
+      'framed mirror', 'bacchante and infant faun', 'diana'
+    ];
+    if (sculptures.some(name => t === name)) return 'sculpture';
 
     // Specific artwork overrides - Cityscapes
-    if (t === 'harlem at night' || t === 'paris, hotel de ville' || t === 'street light' ||
-        t === 'rainy night, etaples' || t === 'venice, santa maria' || t === 'venice, the rialto' ||
-        t === 'scene in indianapolis' || t === 'washington st., indianapolis at dusk') return 'cityscape';
+    const cityscapes = [
+      'harlem at night', 'paris, hotel de ville', 'rainy night, etaples',
+      'venice, santa maria', 'venice, santa maria della salute', 'venice, the rialto',
+      'washington st., indianapolis at dusk', 'dunstaffnage', 'kenilworth castle',
+      'monday morning', 'san giorgio, verona', 'the canal, morning effect',
+      'west front, bath abbey', 'worcester from the river severn',
+      'cross at the entrance to hereford', 'fontainebleau, the departure of napoleon',
+      "king edgar's gate, worcestershire", 'ober wesel on the rhine',
+      'philae - view the temples from the south', 'street light',
+      'west window, worcester cathedral'
+    ];
+    if (cityscapes.some(name => t === name)) return 'cityscape';
 
     // Specific artwork overrides - Landscapes
-    if (t === 'bellinzona' || t === 'cliff rock—appledore' || t === 'cliff rock - appledore' ||
-        t === 'dunstaffnage' || t === 'fountains abbey, yorkshire' ||
-        t === 'fontainebleau, the departure of napoleon' || t === 'glacier de rhone and the galenstock' ||
-        t === 'hurricane' || t === 'lock, long' || t === 'martins-wand, near innsbruck' ||
-        t === 'matlock' || t === 'new york, new haven and hartford' ||
-        t === 'ober wesel on the rhine' || t === 'philae - view the temples from the south' ||
-        t === 'pool in the adirondacks' || t === 'quarry at byram' || t === 'remagen, arpel and lenz' ||
-        t === 'san giorgio, verona' || t === "tim's nocturne" || t === 'the marksberg' ||
-        t === 'the olive grove' || t === 'the pioneers' || t === 'the rainbow') return 'landscape';
+    const landscapes = [
+      'bellinzona', 'cliff rock—appledore', 'cliff rock - appledore',
+      'fountains abbey, yorkshire', 'glacier de rhone and the galenstock',
+      'hurricane', 'lock, long', 'loch long', 'martins-wand, near innsbruck',
+      'matlock', 'pool in the adirondacks', 'quarry at byram', 'remagen, arpel and lenz',
+      "tim's nocturne", 'the marksberg', 'the olive grove', 'the pioneers', 'the rainbow',
+      'scene in indianapolis'
+    ];
+    if (landscapes.some(name => t === name)) return 'landscape';
 
     // Specific artwork overrides - Portraits
-    if (t === 'dolly and rach' || t === 'dorothy' || t === 'indian girl' ||
-        t === 'little brown girl' || t === 'margaret mckittrick' || t === 'marianne ashley walker' ||
-        t === 'glow of gold, gleam of pearl' || t === 'j.m.w. turner at drawing table' ||
-        t === 'the pianist, stanley addicks' || t === 'study of a young woman' ||
-        t === 'sunlight' || t === 'promenade' || t === 'reclining nude' ||
-        t === 'herman and verman' || t === 'hitching') return 'portrait';
+    const portraits = [
+      'dorothy', 'indian girl', 'little brown girl', 'margaret mckittrick',
+      'marianne ashley walker', 'j.m.w. turner at drawing table',
+      'the pianist, stanley addicks', 'study of a young woman', 'our flag'
+    ];
+    if (portraits.some(name => t === name)) return 'portrait';
 
     // Specific artwork overrides - Still Life
     if (t === 'jimson weed') return 'stilllife';
@@ -96,17 +114,16 @@ export default function DocentBrowser() {
         t.includes('morning') || t.includes('evening') || t.includes('autumn') || t.includes('winter') ||
         t.includes('spring') || t.includes('summer') || t.includes('cloud') || t.includes('storm') ||
         t.includes('snow') || t.includes('meadow') || t.includes('hill') || t.includes('creek') ||
-        t.includes('abbey') || t.includes('castle') || t.includes('ruins') || t.includes('grove') ||
-        t.includes('pool') || t.includes('quarry')) return 'landscape';
+        t.includes('ruins') || t.includes('grove') || t.includes('pool') || t.includes('quarry')) return 'landscape';
 
     // General pattern matching - Still Life
     if (t.includes('still life') || t.includes('flower') || t.includes('fruit') ||
         t.includes('melon') || t.includes('vase') || t.includes('bouquet')) return 'stilllife';
 
-    // General pattern matching - Religious & Mythological
+    // General pattern matching - Religious & Mythological (but not sculptures)
     if (t.includes('angel') || t.includes('christ') || t.includes('madonna') || t.includes('resurrection') ||
         t.includes('venus') || t.includes('bacch') || t.includes('europa') || t.includes('calypso') ||
-        t.includes('nymph') || t.includes('apollo') || t.includes('diana')) return 'mythological';
+        t.includes('nymph') || t.includes('apollo')) return 'mythological';
 
     // Medium-based categorization - Sculpture
     if (m.includes('bronze') || m.includes('marble') || m.includes('sculpture')) return 'sculpture';
