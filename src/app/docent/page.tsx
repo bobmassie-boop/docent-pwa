@@ -65,7 +65,7 @@ export default function DocentBrowser() {
       'streetlight', 'the statuette', 'the seiner (the net)',
       'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch',
       'eleanor', 'girl sweeping', 'harmony in pink and gray: lady meux', 'his majesty receives',
-      'ideal head', 'joan of arc'
+      'ideal head', 'joan of arc', 'picking cotton'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
@@ -96,7 +96,7 @@ export default function DocentBrowser() {
       'matlock', 'pool in the adirondacks', 'quarry at byram', 'remagen, erpel and linz',
       'thames nocturne', 'the marxburg', 'the olive grove', 'the pioneers', 'the rainbow',
       'scene in indianapolis', 'fall of the trees, yorkshire', 'fall of the tees, yorkshire',
-      'rosslyn castle', 'after the shower', 'alaska'
+      'rosslyn castle', 'after the shower', 'alaska', 'pleasant run'
     ];
     if (landscapes.some(name => t === name)) return 'landscape';
 
@@ -105,7 +105,7 @@ export default function DocentBrowser() {
       'dorothy', 'indian girl', 'little brown girl', 'margaret mckittrick',
       'marianne ashley walker', 'j. m. w. turner at a drawing table (recto), mrs. monro asleep (verso)',
       'the pianist (stanley addicks)', 'study of a young woman',
-      'george washington at princeton'
+      'george washington at princeton', 'louisa fletcher', 'marie jane andrew', 'munich girl', 'old market woman'
     ];
     if (portraits.some(name => t === name)) return 'portrait';
 
