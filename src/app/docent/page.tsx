@@ -73,7 +73,8 @@ export default function DocentBrowser() {
 
     // Specific artwork overrides - Sculptures
     const sculptures = [
-      'the mountain man', 'gamin', 'framed mirror', 'bacchante and infant faun', 'diana'
+      'the mountain man', 'gamin', 'framed mirror', 'bacchante and infant faun', 'diana',
+      'the flight of europa'
     ];
     if (sculptures.some(name => t === name)) return 'sculpture';
 
@@ -100,7 +101,7 @@ export default function DocentBrowser() {
       'thames nocturne', 'the marxburg', 'the olive grove', 'the pioneers', 'the rainbow',
       'scene in indianapolis', 'fall of the trees, yorkshire', 'fall of the tees, yorkshire',
       'rosslyn castle', 'after the shower', 'alaska', 'pleasant run',
-      'rondout, new york', 'sketch, hyannisport', 'summer pastorale'
+      'rondout, new york', 'sketch, hyannisport', 'summer pastorale', 'sunrise'
     ];
     if (landscapes.some(name => t === name)) return 'landscape';
 
