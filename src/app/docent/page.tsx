@@ -63,7 +63,8 @@ export default function DocentBrowser() {
 
     // Specific artwork overrides - Historical/Narrative
     const historicalNarrative = [
-      'hauptmann must die', 'training for war', 'the young artist'
+      'hauptmann must die', 'training for war', 'the young artist',
+      'streetlight', 'our flag', 'herman and verman'
     ];
     if (historicalNarrative.some(name => t === name)) return 'historical';
 
@@ -84,25 +85,31 @@ export default function DocentBrowser() {
     // Specific artwork overrides - Leisure & Social Life
     const leisureSocial = [
       'afternoon tea', "the artist's party", 'the poetry reading', 'hotel lobby',
-      'dolly & rach', 'preparing for the matinee', 'promenade', "new year's shooter"
+      'dolly & rach', 'preparing for the matinee', 'promenade', "new year's shooter",
+      'sunlight', 'the love song'
     ];
     if (leisureSocial.some(name => t === name)) return 'leisure';
 
     // Specific artwork overrides - Labor & Rural Life
     const laborRural = [
-      'picking cotton', 'henry look unhitching', 'the boat builders', 'the seiner (the net)'
+      'picking cotton', 'henry look unhitching', 'the boat builders', 'the seiner (the net)',
+      'new york, new haven and hartford'
     ];
     if (laborRural.some(name => t === name)) return 'labor';
 
     // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
     const genreScenes = [
-      'herman and verman', 'sunlight', 'the love song', "judith, or cowper's oak",
-      'our flag', 'new york, new haven and hartford',
-      'streetlight', 'harmony in pink and gray: lady meux', 'his majesty receives',
+      'harmony in pink and gray: lady meux', 'his majesty receives',
       'ideal head', 'poppies', 'red kimono on the roof', 'sleep',
       'the consecration, 1861', 'the robe'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
+
+    // Specific artwork overrides - Other (intentionally uncategorized)
+    const otherCategory = [
+      "judith, or cowper's oak"
+    ];
+    if (otherCategory.some(name => t === name)) return 'other';
 
     // Specific artwork overrides - Sculptures
     const sculptures = [
