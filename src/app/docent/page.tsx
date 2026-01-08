@@ -97,16 +97,10 @@ export default function DocentBrowser() {
     ];
     if (laborRural.some(name => t === name)) return 'labor';
 
-    // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
-    const genreScenes = [
-      'his majesty receives', 'ideal head', 'poppies', 'red kimono on the roof', 'sleep',
-      'the consecration, 1861', 'the robe'
-    ];
-    if (genreScenes.some(name => t === name)) return 'genre';
-
     // Specific artwork overrides - Other (intentionally uncategorized)
     const otherCategory = [
-      "judith, or cowper's oak"
+      "judith, or cowper's oak", 'his majesty receives', 'ideal head', 'poppies',
+      'red kimono on the roof', 'sleep', 'the consecration, 1861', 'the robe'
     ];
     if (otherCategory.some(name => t === name)) return 'other';
 
@@ -483,7 +477,6 @@ export default function DocentBrowser() {
               <option value="cityscape">Cityscapes</option>
               <option value="seascape">Seascapes & Marine</option>
               <option value="stilllife">Still Life</option>
-              <option value="genre">Genre Scenes</option>
               <option value="domestic">Domestic Interior</option>
               <option value="leisure">Leisure & Social Life</option>
               <option value="labor">Labor & Rural Life</option>
