@@ -124,6 +124,12 @@ export default function DocentBrowser() {
     // General pattern matching - Portraits
     if (t.includes('portrait') || t.includes('self-portrait') || /^(mrs|mr|miss|dr|colonel|madame|mme)\b/.test(t)) return 'portrait';
 
+    // Specific artwork overrides - Seascapes
+    const seascapes = [
+      'whaler and fishing vessels near the coast of labrador'
+    ];
+    if (seascapes.some(name => t === name)) return 'seascape';
+
     // General pattern matching - Seascapes
     if (t.includes('sea') || t.includes('coast') || t.includes('harbor') || t.includes('ship') ||
         t.includes('marine') || t.includes('beach') || t.includes('ocean') || t.includes('bay') ||
