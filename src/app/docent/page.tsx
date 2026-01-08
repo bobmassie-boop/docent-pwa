@@ -67,7 +67,7 @@ export default function DocentBrowser() {
       'eleanor', 'girl sweeping', 'harmony in pink and gray: lady meux', 'his majesty receives',
       'ideal head', 'joan of arc', 'picking cotton', 'poppies', 'red kimono on the roof', 'sleep',
       'wash day', 'training for war', 'the young artist', 'sunlit window', 'temptation',
-      'the consecration', 'the robe'
+      'the consecration, 1861', 'the robe'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
