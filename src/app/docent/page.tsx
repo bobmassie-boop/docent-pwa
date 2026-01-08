@@ -66,7 +66,8 @@ export default function DocentBrowser() {
       'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch',
       'eleanor', 'girl sweeping', 'harmony in pink and gray: lady meux', 'his majesty receives',
       'ideal head', 'joan of arc', 'picking cotton', 'poppies', 'red kimono on the roof', 'sleep',
-      'wash day'
+      'wash day', 'training for war', 'the young artist', 'sunlit window', 'temptation',
+      'the consecration', 'the robe'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 

@@ -26,7 +26,12 @@ function getSubjectCategory(title, mediumStr) {
     'he is risen', 'reflections', "the artist's party", 'the bacidae', 'the blue tiger',
     'the boat builders', 'the love song', 'untitled (the birth)', "judith, or cowper's oak",
     'our flag', 'concretion', 'henry look unhitching', 'new york, new haven and hartford',
-    'streetlight', 'the statuette', 'the seiner (the net)'
+    'streetlight', 'the statuette', 'the seiner (the net)',
+    'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch',
+    'eleanor', 'girl sweeping', 'harmony in pink and gray: lady meux', 'his majesty receives',
+    'ideal head', 'joan of arc', 'picking cotton', 'poppies', 'red kimono on the roof', 'sleep',
+    'wash day', 'training for war', 'the young artist', 'sunlit window', 'temptation',
+    'the consecration', 'the robe'
   ];
   if (genreScenes.some(name => t === name)) return 'genre';
 
