@@ -75,7 +75,7 @@ export default function DocentBrowser() {
     const sculptures = [
       'the mountain man', 'gamin', 'framed mirror', 'bacchante and infant faun', 'diana',
       'the flight of europa', 'ruth gleaning', 'seated nude',
-      'robert louis stevenson', 'portrait of robert louis stevenson'
+      'robert louis stevenson', 'portrait of robert louis stevenson', 'frog fountain'
     ];
     if (sculptures.some(name => t === name)) return 'sculpture';
 
@@ -103,7 +103,7 @@ export default function DocentBrowser() {
       'scene in indianapolis', 'fall of the trees, yorkshire', 'fall of the tees, yorkshire',
       'rosslyn castle', 'after the shower', 'alaska', 'pleasant run',
       'rondout, new york', 'sketch, hyannisport', 'summer pastorale', 'sunrise',
-      'scene on the wabash'
+      'scene on the wabash', 'first touch of autumn', 'an august sunset – prairie dell'
     ];
     if (landscapes.some(name => t === name)) return 'landscape';
 
