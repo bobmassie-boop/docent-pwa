@@ -55,14 +55,15 @@ export default function DocentBrowser() {
 
     // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
     const genreScenes = [
-      'the poetry reading', 'hotel lobby', "new year’s shooter", 'tidying up',
+      'the poetry reading', 'hotel lobby', "new year's shooter", 'tidying up',
       'two disciples at the tomb (the kneeling disciple)', 'preparing for the matinee', 'hauptmann must die',
       'glow of gold, gleam of pearl', 'herman and verman', 'promenade', 'reclining nude',
       'sunlight', 'dolly & rach', 'girl at the piano', 'girl at the piano: recording sound',
       'he is risen', 'reflections', "the artist's party", 'the bacidae', 'the blue tiger',
       'the boat builders', 'the love song', 'untitled (the birth)', "judith, or cowper's oak",
       'our flag', 'concretion', 'henry look unhitching', 'new york, new haven and hartford',
-      'streetlight', 'the statuette', 'the seiner (the net)'
+      'streetlight', 'the statuette', 'the seiner (the net)',
+      'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
@@ -93,7 +94,7 @@ export default function DocentBrowser() {
       'matlock', 'pool in the adirondacks', 'quarry at byram', 'remagen, erpel and linz',
       'thames nocturne', 'the marxburg', 'the olive grove', 'the pioneers', 'the rainbow',
       'scene in indianapolis', 'fall of the trees, yorkshire', 'fall of the tees, yorkshire',
-      'rosslyn castle'
+      'rosslyn castle', 'after the shower', 'alaska'
     ];
     if (landscapes.some(name => t === name)) return 'landscape';
 
