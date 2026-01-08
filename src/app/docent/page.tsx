@@ -128,7 +128,7 @@ export default function DocentBrowser() {
 
     // Specific artwork overrides - Seascapes
     const seascapes = [
-      'whaler and fishing vessels near the coast of labrador'
+      'whaler and fishing vessels near the coast of labrador', 'morning at grand manan'
     ];
     if (seascapes.some(name => t === name)) return 'seascape';
 
