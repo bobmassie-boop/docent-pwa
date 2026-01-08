@@ -54,20 +54,37 @@ export default function DocentBrowser() {
     ];
     if (contemporary.some(name => t === name)) return 'contemporary';
 
+    // Specific artwork overrides - Domestic Interior
+    const domesticInterior = [
+      'a june idyll', 'afternoon – yellow room', 'at the end of the porch', 'girl sweeping',
+      'tidying up', 'wash day', 'sunlit window', 'eleanor', 'temptation', 'the statuette',
+      'girl at the piano'
+    ];
+    if (domesticInterior.some(name => t === name)) return 'domestic';
+
+    // Specific artwork overrides - Leisure & Social Life
+    const leisureSocial = [
+      'afternoon tea', "the artist's party", 'the poetry reading', 'hotel lobby',
+      'dolly & rach', 'preparing for the matinee', 'promenade', "new year's shooter"
+    ];
+    if (leisureSocial.some(name => t === name)) return 'leisure';
+
+    // Specific artwork overrides - Labor & Rural Life
+    const laborRural = [
+      'picking cotton', 'henry look unhitching', 'the boat builders', 'the seiner (the net)'
+    ];
+    if (laborRural.some(name => t === name)) return 'labor';
+
     // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
     const genreScenes = [
-      'the poetry reading', 'hotel lobby', "new year's shooter", 'tidying up',
-      'two disciples at the tomb (the kneeling disciple)', 'preparing for the matinee', 'hauptmann must die',
-      'glow of gold, gleam of pearl', 'herman and verman', 'promenade', 'reclining nude',
-      'sunlight', 'dolly & rach', 'girl at the piano', "the artist's party", 'the bacidae', 'the blue tiger',
-      'the boat builders', 'the love song', "judith, or cowper's oak",
-      'our flag', 'henry look unhitching', 'new york, new haven and hartford',
-      'streetlight', 'the statuette', 'the seiner (the net)',
-      'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch',
-      'eleanor', 'girl sweeping', 'harmony in pink and gray: lady meux', 'his majesty receives',
-      'ideal head', 'joan of arc', 'picking cotton', 'poppies', 'red kimono on the roof', 'sleep',
-      'wash day', 'training for war', 'the young artist', 'sunlit window', 'temptation',
-      'the consecration, 1861', 'the robe'
+      'two disciples at the tomb (the kneeling disciple)', 'hauptmann must die',
+      'glow of gold, gleam of pearl', 'herman and verman', 'reclining nude',
+      'sunlight', 'the bacidae', 'the blue tiger',
+      'the love song', "judith, or cowper's oak",
+      'our flag', 'new york, new haven and hartford',
+      'streetlight', 'harmony in pink and gray: lady meux', 'his majesty receives',
+      'ideal head', 'joan of arc', 'poppies', 'red kimono on the roof', 'sleep',
+      'training for war', 'the young artist', 'the consecration, 1861', 'the robe'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
@@ -445,6 +462,9 @@ export default function DocentBrowser() {
               <option value="seascape">Seascapes & Marine</option>
               <option value="stilllife">Still Life</option>
               <option value="genre">Genre Scenes</option>
+              <option value="domestic">Domestic Interior</option>
+              <option value="leisure">Leisure & Social Life</option>
+              <option value="labor">Labor & Rural Life</option>
               <option value="contemporary">Contemporary/Abstract</option>
               <option value="mythological">Religious & Mythological</option>
               <option value="sculpture">Sculpture</option>
