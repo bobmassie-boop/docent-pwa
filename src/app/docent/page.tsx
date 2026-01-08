@@ -65,7 +65,7 @@ export default function DocentBrowser() {
       'streetlight', 'the statuette', 'the seiner (the net)',
       'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch',
       'eleanor', 'girl sweeping', 'harmony in pink and gray: lady meux', 'his majesty receives',
-      'ideal head', 'joan of arc', 'picking cotton'
+      'ideal head', 'joan of arc', 'picking cotton', 'poppies', 'red kimono on the roof', 'sleep'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
@@ -84,7 +84,8 @@ export default function DocentBrowser() {
       'west front, bath abbey', 'worcester from the river severn',
       'cross at the entrance to hereford', 'fontainebleau: the departure of napoleon',
       "king edgar's gate, worcester", 'oberwesel on the rhine',
-      'philae: a view of the temples from the south', 'west window, worcester cathedral'
+      'philae: a view of the temples from the south', 'west window, worcester cathedral',
+      'rooftops, new york city'
     ];
     if (cityscapes.some(name => t === name)) return 'cityscape';
 
@@ -96,7 +97,8 @@ export default function DocentBrowser() {
       'matlock', 'pool in the adirondacks', 'quarry at byram', 'remagen, erpel and linz',
       'thames nocturne', 'the marxburg', 'the olive grove', 'the pioneers', 'the rainbow',
       'scene in indianapolis', 'fall of the trees, yorkshire', 'fall of the tees, yorkshire',
-      'rosslyn castle', 'after the shower', 'alaska', 'pleasant run'
+      'rosslyn castle', 'after the shower', 'alaska', 'pleasant run',
+      'rondout, new york', 'sketch, hyannisport'
     ];
     if (landscapes.some(name => t === name)) return 'landscape';
 
