@@ -49,7 +49,8 @@ export default function DocentBrowser() {
 
     // Specific artwork overrides - Contemporary/Abstract
     const contemporary = [
-      'composition 1'
+      'composition 1', 'concretion', 'girl at the piano: recording sound',
+      'he is risen', 'reflections', 'untitled (the birth)'
     ];
     if (contemporary.some(name => t === name)) return 'contemporary';
 
@@ -58,10 +59,9 @@ export default function DocentBrowser() {
       'the poetry reading', 'hotel lobby', "new year's shooter", 'tidying up',
       'two disciples at the tomb (the kneeling disciple)', 'preparing for the matinee', 'hauptmann must die',
       'glow of gold, gleam of pearl', 'herman and verman', 'promenade', 'reclining nude',
-      'sunlight', 'dolly & rach', 'girl at the piano', 'girl at the piano: recording sound',
-      'he is risen', 'reflections', "the artist's party", 'the bacidae', 'the blue tiger',
-      'the boat builders', 'the love song', 'untitled (the birth)', "judith, or cowper's oak",
-      'our flag', 'concretion', 'henry look unhitching', 'new york, new haven and hartford',
+      'sunlight', 'dolly & rach', 'girl at the piano', "the artist's party", 'the bacidae', 'the blue tiger',
+      'the boat builders', 'the love song', "judith, or cowper's oak",
+      'our flag', 'henry look unhitching', 'new york, new haven and hartford',
       'streetlight', 'the statuette', 'the seiner (the net)',
       'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch',
       'eleanor', 'girl sweeping', 'harmony in pink and gray: lady meux', 'his majesty receives',
