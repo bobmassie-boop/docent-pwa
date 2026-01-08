@@ -63,7 +63,9 @@ export default function DocentBrowser() {
       'the boat builders', 'the love song', 'untitled (the birth)', "judith, or cowper's oak",
       'our flag', 'concretion', 'henry look unhitching', 'new york, new haven and hartford',
       'streetlight', 'the statuette', 'the seiner (the net)',
-      'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch'
+      'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch',
+      'eleanor', 'girl sweeping', 'harmony in pink and gray: lady meux', 'his majesty receives',
+      'ideal head', 'joan of arc'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
