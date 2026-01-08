@@ -67,6 +67,12 @@ export default function DocentBrowser() {
     ];
     if (historicalNarrative.some(name => t === name)) return 'historical';
 
+    // Specific artwork overrides - Figures
+    const figures = [
+      'glow of gold, gleam of pearl', 'reclining nude'
+    ];
+    if (figures.some(name => t === name)) return 'figures';
+
     // Specific artwork overrides - Domestic Interior
     const domesticInterior = [
       'a june idyll', 'afternoon – yellow room', 'at the end of the porch', 'girl sweeping',
@@ -90,8 +96,7 @@ export default function DocentBrowser() {
 
     // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
     const genreScenes = [
-      'glow of gold, gleam of pearl', 'herman and verman', 'reclining nude',
-      'sunlight', 'the love song', "judith, or cowper's oak",
+      'herman and verman', 'sunlight', 'the love song', "judith, or cowper's oak",
       'our flag', 'new york, new haven and hartford',
       'streetlight', 'harmony in pink and gray: lady meux', 'his majesty receives',
       'ideal head', 'poppies', 'red kimono on the roof', 'sleep',
@@ -477,6 +482,7 @@ export default function DocentBrowser() {
               <option value="leisure">Leisure & Social Life</option>
               <option value="labor">Labor & Rural Life</option>
               <option value="historical">Historical/Narrative</option>
+              <option value="figures">Figures</option>
               <option value="modernism">American Modernism</option>
               <option value="mythological">Religious & Mythological</option>
               <option value="sculpture">Sculpture</option>
