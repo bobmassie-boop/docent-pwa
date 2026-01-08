@@ -99,8 +99,7 @@ export default function DocentBrowser() {
 
     // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
     const genreScenes = [
-      'harmony in pink and gray: lady meux', 'his majesty receives',
-      'ideal head', 'poppies', 'red kimono on the roof', 'sleep',
+      'his majesty receives', 'ideal head', 'poppies', 'red kimono on the roof', 'sleep',
       'the consecration, 1861', 'the robe'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
@@ -153,7 +152,7 @@ export default function DocentBrowser() {
       'marianne ashley walker', 'j. m. w. turner at a drawing table (recto), mrs. monro asleep (verso)',
       'the pianist (stanley addicks)', 'study of a young woman',
       'george washington at princeton', 'louisa fletcher', 'marie jane andrew', 'munich girl', 'old market woman',
-      'woman in white', 'portrait of reginald marsh'
+      'woman in white', 'portrait of reginald marsh', 'harmony in pink and gray: lady meux'
     ];
     if (portraits.some(name => t === name)) return 'portrait';
 
