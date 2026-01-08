@@ -100,7 +100,7 @@ export default function DocentBrowser() {
       'thames nocturne', 'the marxburg', 'the olive grove', 'the pioneers', 'the rainbow',
       'scene in indianapolis', 'fall of the trees, yorkshire', 'fall of the tees, yorkshire',
       'rosslyn castle', 'after the shower', 'alaska', 'pleasant run',
-      'rondout, new york', 'sketch, hyannisport'
+      'rondout, new york', 'sketch, hyannisport', 'summer pastorale'
     ];
     if (landscapes.some(name => t === name)) return 'landscape';
 
@@ -115,7 +115,10 @@ export default function DocentBrowser() {
     if (portraits.some(name => t === name)) return 'portrait';
 
     // Specific artwork overrides - Still Life
-    if (t === 'jimson weed') return 'stilllife';
+    const stillLifes = [
+      'jimson weed', 'still life with fish', 'still life with hummingbird'
+    ];
+    if (stillLifes.some(name => t === name)) return 'stilllife';
 
     // General pattern matching - Portraits
     if (t.includes('portrait') || t.includes('self-portrait') || /^(mrs|mr|miss|dr|colonel|madame|mme)\b/.test(t)) return 'portrait';
