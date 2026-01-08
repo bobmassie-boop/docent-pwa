@@ -74,7 +74,8 @@ export default function DocentBrowser() {
     // Specific artwork overrides - Sculptures
     const sculptures = [
       'the mountain man', 'gamin', 'framed mirror', 'bacchante and infant faun', 'diana',
-      'the flight of europa', 'ruth gleaning', 'seated nude'
+      'the flight of europa', 'ruth gleaning', 'seated nude',
+      'robert louis stevenson', 'portrait of robert louis stevenson'
     ];
     if (sculptures.some(name => t === name)) return 'sculpture';
 
@@ -112,7 +113,7 @@ export default function DocentBrowser() {
       'marianne ashley walker', 'j. m. w. turner at a drawing table (recto), mrs. monro asleep (verso)',
       'the pianist (stanley addicks)', 'study of a young woman',
       'george washington at princeton', 'louisa fletcher', 'marie jane andrew', 'munich girl', 'old market woman',
-      'woman in white'
+      'woman in white', 'portrait of reginald marsh'
     ];
     if (portraits.some(name => t === name)) return 'portrait';
 
