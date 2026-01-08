@@ -65,7 +65,8 @@ export default function DocentBrowser() {
       'streetlight', 'the statuette', 'the seiner (the net)',
       'a june idyll', 'afternoon – yellow room', 'afternoon tea', 'at the end of the porch',
       'eleanor', 'girl sweeping', 'harmony in pink and gray: lady meux', 'his majesty receives',
-      'ideal head', 'joan of arc', 'picking cotton', 'poppies', 'red kimono on the roof', 'sleep'
+      'ideal head', 'joan of arc', 'picking cotton', 'poppies', 'red kimono on the roof', 'sleep',
+      'wash day'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
@@ -107,7 +108,8 @@ export default function DocentBrowser() {
       'dorothy', 'indian girl', 'little brown girl', 'margaret mckittrick',
       'marianne ashley walker', 'j. m. w. turner at a drawing table (recto), mrs. monro asleep (verso)',
       'the pianist (stanley addicks)', 'study of a young woman',
-      'george washington at princeton', 'louisa fletcher', 'marie jane andrew', 'munich girl', 'old market woman'
+      'george washington at princeton', 'louisa fletcher', 'marie jane andrew', 'munich girl', 'old market woman',
+      'woman in white'
     ];
     if (portraits.some(name => t === name)) return 'portrait';
 
