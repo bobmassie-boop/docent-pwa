@@ -47,17 +47,30 @@ export default function DocentBrowser() {
     const t = title.toLowerCase().replace(/[\u2018\u2019]/g, "'");
     const m = (mediumStr || '').toLowerCase();
 
-    // Specific artwork overrides - Contemporary/Abstract
-    const contemporary = [
+    // Specific artwork overrides - American Modernism
+    const americanModernism = [
       'composition 1', 'concretion', 'girl at the piano: recording sound',
-      'he is risen', 'reflections', 'untitled (the birth)'
+      'reflections', 'untitled (the birth)', 'the blue tiger'
     ];
-    if (contemporary.some(name => t === name)) return 'contemporary';
+    if (americanModernism.some(name => t === name)) return 'modernism';
+
+    // Specific artwork overrides - Religious & Mythological (specific titles)
+    const religiousMythological = [
+      'he is risen', 'two disciples at the tomb (the kneeling disciple)', 'joan of arc',
+      'the bacidae', 'temptation'
+    ];
+    if (religiousMythological.some(name => t === name)) return 'mythological';
+
+    // Specific artwork overrides - Historical/Narrative
+    const historicalNarrative = [
+      'hauptmann must die', 'training for war', 'the young artist'
+    ];
+    if (historicalNarrative.some(name => t === name)) return 'historical';
 
     // Specific artwork overrides - Domestic Interior
     const domesticInterior = [
       'a june idyll', 'afternoon – yellow room', 'at the end of the porch', 'girl sweeping',
-      'tidying up', 'wash day', 'sunlit window', 'eleanor', 'temptation', 'the statuette',
+      'tidying up', 'wash day', 'sunlit window', 'eleanor', 'the statuette',
       'girl at the piano'
     ];
     if (domesticInterior.some(name => t === name)) return 'domestic';
@@ -77,14 +90,12 @@ export default function DocentBrowser() {
 
     // Specific artwork overrides - Genre Scenes (narrative/interior scenes)
     const genreScenes = [
-      'two disciples at the tomb (the kneeling disciple)', 'hauptmann must die',
       'glow of gold, gleam of pearl', 'herman and verman', 'reclining nude',
-      'sunlight', 'the bacidae', 'the blue tiger',
-      'the love song', "judith, or cowper's oak",
+      'sunlight', 'the love song', "judith, or cowper's oak",
       'our flag', 'new york, new haven and hartford',
       'streetlight', 'harmony in pink and gray: lady meux', 'his majesty receives',
-      'ideal head', 'joan of arc', 'poppies', 'red kimono on the roof', 'sleep',
-      'training for war', 'the young artist', 'the consecration, 1861', 'the robe'
+      'ideal head', 'poppies', 'red kimono on the roof', 'sleep',
+      'the consecration, 1861', 'the robe'
     ];
     if (genreScenes.some(name => t === name)) return 'genre';
 
@@ -465,7 +476,8 @@ export default function DocentBrowser() {
               <option value="domestic">Domestic Interior</option>
               <option value="leisure">Leisure & Social Life</option>
               <option value="labor">Labor & Rural Life</option>
-              <option value="contemporary">Contemporary/Abstract</option>
+              <option value="historical">Historical/Narrative</option>
+              <option value="modernism">American Modernism</option>
               <option value="mythological">Religious & Mythological</option>
               <option value="sculpture">Sculpture</option>
               <option value="other">Other</option>
