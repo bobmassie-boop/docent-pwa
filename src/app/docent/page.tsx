@@ -565,7 +565,7 @@ export default function DocentBrowser() {
               </div>
             </Button>
           </Link>
-          <a href="/ima-floor-map.pdf" target="_blank" rel="noopener noreferrer">
+          <Link href="/docent/floor-map">
             <Button
               variant="outline"
               className="w-full md:w-auto flex items-center gap-2 bg-green-50 border-green-200 hover:bg-green-100"
@@ -576,7 +576,7 @@ export default function DocentBrowser() {
                 <div className="text-xs text-muted-foreground">View museum layout</div>
               </div>
             </Button>
-          </a>
+          </Link>
         </div>
 
 
