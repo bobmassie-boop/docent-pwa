@@ -602,13 +602,20 @@ export default function DocentBrowser() {
           {filteredArtworks.map((artwork) => (
             <Link key={artwork.id} href={`/docent/artwork/${artwork.id}`}>
               <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
-                {artwork.thumbnail && (
+                {artwork.thumbnail ? (
                   <div className="aspect-square overflow-hidden rounded-t-lg bg-muted">
                     <img
                       src={artwork.thumbnail}
                       alt={artwork.Title}
                       className="w-full h-full object-cover"
                     />
+                  </div>
+                ) : (
+                  <div className="aspect-square overflow-hidden rounded-t-lg bg-gray-100 flex items-center justify-center">
+                    <div className="text-center p-8">
+                      <div className="text-4xl mb-2">🖼️</div>
+                      <p className="text-sm text-gray-500">No Image Available</p>
+                    </div>
                   </div>
                 )}
                 <CardHeader>
@@ -644,13 +651,20 @@ export default function DocentBrowser() {
               <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                 <CardContent className="p-6">
                   <div className="flex gap-4">
-                    {artwork.thumbnail && (
+                    {artwork.thumbnail ? (
                       <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg bg-muted">
                         <img
                           src={artwork.thumbnail}
                           alt={artwork.Title}
                           className="w-full h-full object-cover"
                         />
+                      </div>
+                    ) : (
+                      <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="text-2xl">🖼️</div>
+                          <p className="text-xs text-gray-500 mt-1">No Image</p>
+                        </div>
                       </div>
                     )}
                     <div className="flex-1">
