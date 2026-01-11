@@ -440,6 +440,7 @@ export default function DocentBrowser() {
               <option value="">All Collections</option>
               <option value="American Painting & Sculpture 1800–1945">American 1800–1945</option>
               <option value="American Painting & Sculpture Before 1800">American Before 1800</option>
+              <option value="Contemporary">Contemporary</option>
               <option value="Turner Exhibition - Golden Gallery">Turner Exhibition</option>
             </select>
           </div>
