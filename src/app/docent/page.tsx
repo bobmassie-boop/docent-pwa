@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Artwork } from '@/lib/supabase';
+import { getActiveCores } from '@/lib/cores';
 
 export default function DocentBrowser() {
   const router = useRouter();
@@ -363,9 +364,32 @@ export default function DocentBrowser() {
           className="h-20 w-auto"
         />
         <h1 className="text-[22px] leading-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-          AMERICAN CORE DOCENT REFERENCE
+          IMA DOCENT REFERENCE
         </h1>
       </div>
+
+        {/* Core Selector */}
+        <div className="flex items-center gap-4 mt-4">
+          <label className="text-lg font-medium" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            Sort by Your Core:
+          </label>
+          <select
+            className="px-4 py-2 border-2 rounded-md text-base font-medium bg-gray-50"
+            onChange={(e) => {
+              if (e.target.value) {
+                router.push(`/docent/${e.target.value}`);
+              }
+            }}
+            defaultValue=""
+          >
+            <option value="">All Cores</option>
+            {getActiveCores().map((core) => (
+              <option key={core.id} value={core.name}>
+                {core.displayName}
+              </option>
+            ))}
+          </select>
+        </div>
 
       {/* Controls */}
       <div className="mb-6 space-y-4">
