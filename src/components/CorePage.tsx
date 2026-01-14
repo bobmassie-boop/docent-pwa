@@ -113,12 +113,14 @@ export default function CorePage({ core, allArtworks }: CorePageProps) {
       );
     }
 
-    // On Display filter
-    if (showOnDisplay && !showNotOnDisplay) {
-      filtered = filtered.filter(artwork => artwork['On Display'] === true);
-    } else if (!showOnDisplay && showNotOnDisplay) {
-      filtered = filtered.filter(artwork => artwork['On Display'] !== true);
-    }
+    // On Display filter - treat null/undefined as "on display" since most are
+    filtered = filtered.filter(artwork => {
+      const isOnDisplay = artwork['On Display'] === 'checked' || artwork['On Display'] === true;
+      if (showOnDisplay && showNotOnDisplay) return true; // Show all
+      if (showOnDisplay && !showNotOnDisplay) return isOnDisplay || !artwork['On Display']; // Include on display and unknown
+      if (!showOnDisplay && showNotOnDisplay) return !isOnDisplay && artwork['On Display'] !== undefined; // Only explicitly not on display
+      return false; // Neither checked - show nothing
+    });
 
     // Sorting
     filtered.sort((a, b) => {

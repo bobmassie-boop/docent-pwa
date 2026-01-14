@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import CorePage from '@/components/CorePage';
-import { Artwork, fetchArtworks } from '@/lib/supabase';
+import { Artwork } from '@/lib/supabase';
 import { cores } from '@/lib/cores';
 
 export default function AmericanCorePage() {
@@ -12,8 +12,9 @@ export default function AmericanCorePage() {
   useEffect(() => {
     async function loadArtworks() {
       try {
-        const data = await fetchArtworks();
-        setArtworks(data);
+        const response = await fetch('/api/artworks');
+        const data = await response.json();
+        setArtworks(data.artworks || []);
       } catch (error) {
         console.error('Error loading artworks:', error);
       } finally {
