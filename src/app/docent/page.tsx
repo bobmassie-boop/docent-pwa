@@ -357,19 +357,20 @@ export default function DocentBrowser() {
   return (
     <div className="container mx-auto p-4 max-w-7xl">
       {/* Header */}
-      <div className="mb-6 flex items-center gap-4">
+      <div className="mb-2 flex items-center gap-1">
         <img 
-          src="/american-core-logo.png" 
-          alt="American Core Logo" 
-          className="h-20 w-auto"
+          src="/docent-logo.png" 
+          alt="Newfields/IMA Docents Logo" 
+          className="h-38 w-auto"
         />
-        <h1 className="text-[22px] leading-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-          IMA DOCENT REFERENCE
-        </h1>
+        <div style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+          <div className="text-[22px] leading-tight">NEWFIELDS / IMA</div>
+          <div className="text-[33px] leading-tight font-semibold">DOCENT REFERENCE</div>
+        </div>
       </div>
 
         {/* Core Selector */}
-        <div className="flex items-center gap-4 mt-4">
+        <div className="flex items-center gap-4">
           <label className="text-lg font-medium" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
             Sort by Your Core:
           </label>
@@ -598,6 +599,30 @@ export default function DocentBrowser() {
               <div className="text-left">
                 <div className="font-semibold">Gallery Floor Map</div>
                 <div className="text-xs text-muted-foreground">View museum layout</div>
+              </div>
+            </Button>
+          </Link>
+          <Link href="/docent/roster">
+            <Button
+              variant="outline"
+              className="w-full md:w-auto flex items-center gap-2 bg-purple-50 border-purple-200 hover:bg-purple-100"
+            >
+              <span className="text-xl">👥</span>
+              <div className="text-left">
+                <div className="font-semibold">Docent Roster</div>
+                <div className="text-xs text-muted-foreground">View docent photos & contacts</div>
+              </div>
+            </Button>
+          </Link>
+          <Link href="/docent/staff">
+            <Button
+              variant="outline"
+              className="w-full md:w-auto flex items-center gap-2 bg-rose-50 border-rose-200 hover:bg-rose-100"
+            >
+              <span className="text-xl">🏛️</span>
+              <div className="text-left">
+                <div className="font-semibold">Newfields Staff</div>
+                <div className="text-xs text-muted-foreground">Museum staff contacts</div>
               </div>
             </Button>
           </Link>
