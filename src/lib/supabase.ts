@@ -14,7 +14,7 @@ export interface Artwork {
   'Artist Last Name'?: string;
   'Artist (Display)'?: string;
   Collection?: string;
-  'On Display'?: boolean;
+  'On Display'?: boolean | string;
   Date?: string;
   Medium?: string;
   Dimensions?: string;
