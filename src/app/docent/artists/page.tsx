@@ -115,8 +115,8 @@ export default function ArtistGallery() {
         </Button>
         <div className="flex items-center gap-4">
           <img
-            src="/american-core-logo.png"
-            alt="American Core Logo"
+            src="/docent-logo.png"
+            alt="Newfields/IMA Docents Logo"
             className="h-16 w-auto"
           />
           <div>

@@ -20,7 +20,9 @@ export const cores: Record<string, Core> = {
     badge: '/images/badges/american-core.png',
     collections: [
       'American Painting & Sculpture 1800–1945',
-      'American Painting & Sculpture Before 1800'
+      'American Painting & Sculpture Before 1800',
+      'American Painting and Sculpture 1800-1945',
+      'American Painting and Sculpture Before 1800'
     ],
     description: 'American art from colonial times through the mid-20th century'
   },
